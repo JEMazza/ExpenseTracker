@@ -14,30 +14,32 @@ Implement a faster, easier to track expense list beyond what a spreadsheet can o
 
 - NOTE: 1.0 is only released with Spanish support as a proof of concept. Future versions will have English support for text.
 
-1. Running the system
+- Running the system
 
     1. Go to "Releases".
-
     2. Download the version you desire.
 
-2. Compiling
+- Compiling
 
 Requirements:
 
-- [.NET 8 SDK]()
+- [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 
-    1. Clone the repository.
+Steps.
+
+1. Clone the repository.
 
     ` git clone https://github.com/JEMazza/ExpenseTracker `
 
-    2. Navigate to the solution directory.
+2. Navigate to the solution directory.
 
     ` cd ExpenseTracker `
 
-    3. Compile the solution
+3. Compile the solution
+
     ` dotnet build `
 
-    4. Run the project.
+4. Run the project.
 
     ` dotnet run`
 

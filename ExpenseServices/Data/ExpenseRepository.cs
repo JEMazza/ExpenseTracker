@@ -2,7 +2,6 @@
 using ExpenseServices.DTOs;
 using ExpenseServices.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace ExpenseServices.Data {
     public class ExpenseRepository:Repository<Expense> {

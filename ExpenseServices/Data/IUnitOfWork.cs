@@ -5,6 +5,12 @@ namespace ExpenseServices.Data {
     public interface IUnitOfWork{
 
         /// <summary>
+        /// Calls SaveChangesAsync()
+        /// </summary>
+        /// <returns>Nothing</returns>
+        public Task Save();
+
+        /// <summary>
         /// Commits a transaction
         /// </summary>
         /// <param name="tran">The transaction to be commited</param>
@@ -18,11 +24,6 @@ namespace ExpenseServices.Data {
         /// <returns>Nothing</returns>
         public Task Rollback(IDbContextTransaction tran);
 
-        /// <summary>
-        /// Calls SaveChangesAsync()
-        /// </summary>
-        /// <returns>Nothing</returns>
-        public Task Save();
         /// <summary>
         /// Starts a transaction
         /// </summary>

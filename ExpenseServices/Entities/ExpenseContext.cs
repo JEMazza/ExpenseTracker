@@ -17,7 +17,7 @@ namespace ExpenseServices.Entities {
             string appData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             string appFolder = Path.Combine(appData, "Expense Tracker");
             Directory.CreateDirectory(appFolder);
-            datastring = Path.Combine(appFolder, "Expenses.db");
+            dataString = Path.Combine(appFolder, "Expenses.db");
             #endif
             optionsBuilder.UseSqlite($"Data Source={dataString}");
         }

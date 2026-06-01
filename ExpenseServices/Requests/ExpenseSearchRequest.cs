@@ -1,0 +1,15 @@
+﻿
+namespace ExpenseServices.Requests {
+    public class ExpenseSearchRequest:IRequest {
+        public DateTime? From { get; set; }
+        public DateTime? To { get; set; }
+        public IEnumerable<int> Types { get; set; }
+        public IEnumerable<int> Places { get; set; }
+        public string Valid() {
+            if (From.HasValue && To.HasValue && (From.Value > To.Value)) {
+                return "La fecha 'Desde' no puede ser mayor a 'Hasta'";
+            }
+            return string.Empty;
+        }
+    }
+}

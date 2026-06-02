@@ -14,12 +14,13 @@ Implement a faster, easier to track expense list beyond what a spreadsheet can o
 
 - NOTE: 1.0 is only released with Spanish support as a proof of concept. Future versions will have English support for text.
 
-- Running the system
+### Running the system
 
-    1. Go to "Releases".
-    2. Download the version you desire.
+1. Go to "Releases".
 
-- Compiling
+2. Download the version you desire.
+
+### Compiling
 
 Requirements:
 
@@ -58,7 +59,7 @@ Dependency Injection was used in order to provide the required services, DbConte
 
 ### Pattern implementations
 
-- Repository: Instead of applying an interface per repository, since that duplicates files and generates slower deployment and fix releases, I first defined an interface with the basic operations for any repository, those being Add(TEntity) and Delete(TEntity), being called IRepository. After that, I created an abstract class Repository that implmented IRepository, implementing the Add(TEntity) and Delete(TEntity) methods, defining the DbContext property as protected with a constructor. This decision leads to avoiding DRY by not repeating the Add() and Remove() calls. Finally, the concrete repositories inherit Repository, have their DbSet defined to avoid repeating _context.Set, implement their own methods as needed and optimize as needed
+- Repository: Instead of applying an interface per repository, since that duplicates files and generates slower deployment and fix releases, I first defined an interface with the basic operations for any repository, those being Add(TEntity) and Delete(TEntity), being called IRepository. After that, I created an abstract class Repository that implmented IRepository, implementing the Add(TEntity) and Delete(TEntity) methods, defining the DbContext property as protected with a constructor. This decision leads to avoiding DRY by not repeating the Add() and Remove() calls. Finally, the concrete repositories inherit Repository, have their DbSet defined to avoid repeating _context.Set, implement their own methods as needed and optimize as needed.
 
 - Unit Of Work: As with Repository, I defined the interface IUnitOfWork in order to set the basic operations any Unit Of Work should follow. Those being Save() in order to save the progress up until that moment, Commit(IDbTransaction) for commiting a transaction, Rollback(IDbTransaction) for rolling back a transaction and StartTransaction() in order to begin a transaction. Then, I implemented a UnitOfWork that implements the IUnitOfWork interface with the methods described, has the Context property alongside each Repository that is needed. Alongside that, there is a method in order to instantiate and/or retrieve the repositories that are needed. That way, it saves memory and processing time instantiating repositories that are not needed.
 
@@ -83,3 +84,9 @@ I assume that I don't know the primary key for the entity itself. Therefore, it 
 ### Why manual transactions?
 
 SaveChanges(), in both sync and async methods, will apply the changes done at the moment it is called. By implementing a transaction, I ensure that the changes made by that method are the ones that the only ones that are persisted in that instance. And, in case the SaveChanges() fails for any reason, I ensure database consistency.
+
+---
+
+## License
+
+This is distributed under the GNU GPLv3 license. See `LICENSE` for more information.

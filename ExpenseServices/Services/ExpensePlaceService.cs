@@ -11,5 +11,8 @@ namespace ExpenseServices.Services {
             return await _unit.ExpensePlace.GetPlaces();
         }
 
+        public async Task<IEnumerable<ExpensePlaceGroupDto>> GetPlaceSummary(DateTime? from, DateTime? to) {
+            return await _unit.ExpensePlace.GetPlacesGroup(from,to);
+        }
     }
 }

@@ -32,13 +32,14 @@
             listaToolStripMenuItem = new ToolStripMenuItem();
             agregarToolStripMenuItem = new ToolStripMenuItem();
             cerrarToolStripMenuItem = new ToolStripMenuItem();
+            reportesToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
             menuStrip1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { gastosToolStripMenuItem, cerrarToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { gastosToolStripMenuItem, reportesToolStripMenuItem, cerrarToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1029, 29);
@@ -55,14 +56,14 @@
             // listaToolStripMenuItem
             // 
             listaToolStripMenuItem.Name = "listaToolStripMenuItem";
-            listaToolStripMenuItem.Size = new Size(180, 26);
+            listaToolStripMenuItem.Size = new Size(136, 26);
             listaToolStripMenuItem.Text = "Lista";
             listaToolStripMenuItem.Click += listaToolStripMenuItem_Click;
             // 
             // agregarToolStripMenuItem
             // 
             agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
-            agregarToolStripMenuItem.Size = new Size(180, 26);
+            agregarToolStripMenuItem.Size = new Size(136, 26);
             agregarToolStripMenuItem.Text = "Agregar";
             agregarToolStripMenuItem.Click += agregarToolStripMenuItem_Click;
             // 
@@ -72,6 +73,13 @@
             cerrarToolStripMenuItem.Size = new Size(66, 25);
             cerrarToolStripMenuItem.Text = "Cerrar";
             cerrarToolStripMenuItem.Click += cerrarToolStripMenuItem_Click;
+            // 
+            // reportesToolStripMenuItem
+            // 
+            reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
+            reportesToolStripMenuItem.Size = new Size(84, 25);
+            reportesToolStripMenuItem.Text = "Reportes";
+            reportesToolStripMenuItem.Click += reportesToolStripMenuItem_Click;
             // 
             // MainForm
             // 
@@ -97,5 +105,6 @@
         private ToolStripMenuItem listaToolStripMenuItem;
         private ToolStripMenuItem agregarToolStripMenuItem;
         private ToolStripMenuItem cerrarToolStripMenuItem;
+        private ToolStripMenuItem reportesToolStripMenuItem;
     }
 }

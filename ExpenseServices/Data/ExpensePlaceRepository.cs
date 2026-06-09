@@ -1,6 +1,8 @@
 ﻿
+using DocumentFormat.OpenXml.Spreadsheet;
 using ExpenseServices.DTOs;
 using ExpenseServices.Entities;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExpenseServices.Data {
@@ -34,7 +36,42 @@ namespace ExpenseServices.Data {
         /// <param name="name"></param>
         /// <returns></returns>
         public async Task<int> Exists(string name) {
-            return await _set.Where(p => p.Name == name).Select(p => p.Id).FirstOrDefaultAsync();
+            return await _set.Where(p => EF.Functions.Collate(p.Name,"NOCASE") == name).Select(p => p.Id).FirstOrDefaultAsync();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <returns></returns>
+        public async Task<List<ExpensePlaceGroupDto>> GetPlacesGroup(DateTime? from, DateTime? to) {
+            bool filter = from.HasValue || to.HasValue;
+            bool doubleFilter = from.HasValue && to.HasValue;
+            var parameters = new List<object>();
+            string query = $@"SELECT p.Name, COUNT(*) as Count, Sum(e.Cost) as Total " +
+                "FROM Places p " +
+                "INNER JOIN Expenses e ON p.Id = e.PlaceId";
+            if (filter) {
+                query += $@" WHERE";
+                if (from.HasValue) {
+                    query += $@" e.Date >= @From ";
+                    parameters.Add(new SqliteParameter("@From", from));
+                }
+                if (to.HasValue) {
+                    if (doubleFilter) {
+                        query += $@" AND ";
+                    }
+                    query += $@"e.Date <= @To ";
+                    parameters.Add(new SqliteParameter("@To", to));
+                }
+            }
+            query += " GROUP BY p.Name ";
+            return await _context.Database.SqlQueryRaw<ExpensePlaceGroupDto>(query, parameters.ToArray())
+                .OrderByDescending(et => et.Total)
+                .ThenBy(et => et.Name)
+                .ToListAsync();
+        }
+
     }
 }

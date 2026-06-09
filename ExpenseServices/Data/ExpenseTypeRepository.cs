@@ -1,6 +1,11 @@
 ﻿
+using DocumentFormat.OpenXml.Drawing.Diagrams;
+using DocumentFormat.OpenXml.Spreadsheet;
+using DocumentFormat.OpenXml.Vml;
+using DocumentFormat.OpenXml.Wordprocessing;
 using ExpenseServices.DTOs;
 using ExpenseServices.Entities;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExpenseServices.Data {
@@ -35,7 +40,42 @@ namespace ExpenseServices.Data {
         /// <param name="name">The type name</param>
         /// <returns>The Id of the entity or 0 if it doesn't</returns>
         public async Task<int> Exists(string name) {
-            return await _set.Where(t => t.Name == name).Select(t => t.Id).FirstOrDefaultAsync();
+            return await _set.Where(t => EF.Functions.Collate(t.Name,"NOCASE") == name).Select(t => t.Id).FirstOrDefaultAsync();
         }
+
+        /// <summary>
+        /// Returns the 
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <returns></returns>
+        public async Task<List<ExpenseTypeGroupDto>> GetTypesGroup(DateTime? from, DateTime? to) {
+            bool filter = from.HasValue || to.HasValue;
+            bool doubleFilter = from.HasValue && to.HasValue;
+            var parameters = new List<object>();
+            string query = $@"SELECT t.Name, COUNT(*) as Count, Sum(e.Cost) as Total " +
+                "FROM Types t " +
+                "INNER JOIN Expenses e ON t.Id = e.TypeId";
+            if (filter) {
+                query += $@" WHERE";
+                if (from.HasValue) {
+                    query += $@" e.Date >= @From ";
+                    parameters.Add(new SqliteParameter("@From", from));
+                }
+                if (to.HasValue) {
+                    if (doubleFilter) {
+                        query += $@" AND ";
+                    }
+                    query += $@"e.Date <= @To ";
+                    parameters.Add(new SqliteParameter("@To", to));
+                }
+            }
+            query += " GROUP BY t.Name ";
+            return await _context.Database.SqlQueryRaw<ExpenseTypeGroupDto>(query, parameters.ToArray())
+                .OrderByDescending(et => et.Total)
+                .ThenBy(et => et.Name)
+                .ToListAsync();
+        }
+
     }
 }

@@ -40,7 +40,7 @@ namespace ExpenseTracker.Forms {
 
 
         private async void ExpenseDataForm_Load(object sender, EventArgs e) {
-            this.Text = _id!=-1?"Actualizar gasto":"Nuevo gasto";
+            this.Text = _id!=-1?Resources.MessagesResource.ExpenseUpdateFormTitle: Resources.MessagesResource.ExpenseNewFormTitle;
             cmbPlace.ValueMember = "Id";
             cmbPlace.DisplayMember = "Name";
             cmbType.ValueMember = "Id";
@@ -53,7 +53,7 @@ namespace ExpenseTracker.Forms {
                     this.Close();
                     return;
                 }
-                btnAction.Text = "Actualizar";
+                btnAction.Text = Resources.MessagesResource.ExpenseModifyActionLabel;
                 tBoxName.Text = formData.Name;
                 numCost.Value = Convert.ToDecimal(formData.Price);
                 dtpDate.Value = formData.Date;
@@ -61,7 +61,7 @@ namespace ExpenseTracker.Forms {
                 cmbType.SelectedItem = cmbType.Items.Cast<ExpenseTypeDto>().FirstOrDefault(et => et.Id == formData.Type);
             }
             else {
-                btnAction.Text = "Agregar";
+                btnAction.Text = Resources.MessagesResource.ExpenseDeleteActionLabel;
             }
         }
 
@@ -78,8 +78,8 @@ namespace ExpenseTracker.Forms {
                     Name = tBoxName.Text,
                     Cost = decimal.ToDouble(numCost.Value),
                     Date = dtpDate.Value.Date,
-                    Place = cmbPlace.Text.ToUpperInvariant(),
-                    Type = cmbType.Text.ToUpperInvariant(),
+                    Place = cmbPlace.Text.Trim(),
+                    Type = cmbType.Text.Trim(),
                 };
                 string msg = request.Valid();
                 if (!string.IsNullOrEmpty(msg)) {

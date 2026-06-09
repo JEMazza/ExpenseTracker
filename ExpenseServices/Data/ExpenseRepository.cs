@@ -4,7 +4,7 @@ using ExpenseServices.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExpenseServices.Data {
-    public class ExpenseRepository:Repository<Expense> {
+    public class ExpenseRepository : Repository<Expense> {
 
         public readonly DbSet<Expense> _set;
 
@@ -57,12 +57,12 @@ namespace ExpenseServices.Data {
         /// <param name="size">The size of the page</param>
         /// <param name="order">The order of the dtos</param>
         /// <returns>A collection of ExpenseDto</returns>
-        public async Task<IEnumerable<ExpenseDto>> GetExpenses(DateTime? from, DateTime? to, IEnumerable<int> types,IEnumerable<int> places,int? page, int? size,ExpenseOrderEnum order = ExpenseOrderEnum.OrderByDate) {
+        public async Task<IEnumerable<ExpenseDto>> GetExpenses(DateTime? from, DateTime? to, IEnumerable<int> types, IEnumerable<int> places, int? page, int? size, ExpenseOrderEnum order = ExpenseOrderEnum.OrderByDate) {
             var query = GetBaseQuery(from, to, types, places);
             query = order switch {
                 ExpenseOrderEnum.OrderByDate => query.OrderBy(e => e.Date).ThenBy(e => e.Id),
                 ExpenseOrderEnum.OrderByDateDesc => query.OrderByDescending(e => e.Date).ThenByDescending(e => e.Id),
-                ExpenseOrderEnum.OrderByName => query.OrderBy(e => e.Name).ThenBy(e=> e.Id),
+                ExpenseOrderEnum.OrderByName => query.OrderBy(e => e.Name).ThenBy(e => e.Id),
                 ExpenseOrderEnum.OrderByNameDesc => query.OrderByDescending(e => e.Name).ThenByDescending(e => e.Id),
                 ExpenseOrderEnum.OrderByCost => query.OrderBy(e => e.Cost).ThenBy(e => e.Id),
                 ExpenseOrderEnum.OrderByCostDesc => query.OrderByDescending(e => e.Cost).ThenByDescending(e => e.Id),
@@ -91,18 +91,9 @@ namespace ExpenseServices.Data {
         /// <returns>The summary containing the total, the ammount of expenses, the highest place and type</returns>
         public async Task<ExpenseSummaryDto> GetSummary(DateTime? from, DateTime? to, IEnumerable<int> types, IEnumerable<int> places) {
             var query = GetBaseQuery(from, to, types, places);
-            return await query.GroupBy(e => 1).Select(e => new ExpenseSummaryDto(
-                e.Sum(ex => ex.Cost),
-                e.Count(),
-                query.GroupBy(e => e.Place)
-                 .OrderByDescending(e => e.Sum(ex => ex.Cost))
-                 .Select(p => p.Key.Name)
-                 .FirstOrDefault() ?? "N/A",
-                query.GroupBy(e => e.Type)
-                 .OrderByDescending(e => e.Sum(ex => ex.Cost))
-                 .Select(t => t.Key.Name)
-                 .FirstOrDefault() ?? "N/A"
-            )).FirstOrDefaultAsync() ?? new ExpenseSummaryDto(0.0,0,"N/A","N/A");
+            var highPlace = await query.GroupBy(ex => ex.Place.Name).OrderByDescending(exp => exp.Sum(ex => ex.Cost)).Select(exp => exp.Key).FirstOrDefaultAsync() ?? "N/A";
+            var highType = await query.GroupBy(ex => ex.Type.Name).OrderByDescending(exp => exp.Sum(ex => ex.Cost)).Select(exp => exp.Key).FirstOrDefaultAsync() ?? "N/A";
+            return new ExpenseSummaryDto(await query.SumAsync(ex => ex.Cost),await query.CountAsync(),highPlace,highType);
         }
 
         /// <summary>
@@ -112,14 +103,35 @@ namespace ExpenseServices.Data {
         /// <returns>The ExpenseDto</returns>
         public async Task<ExpenseFormDto?> GetExpense(int id) {
             return await _set.Where(e => e.Id == id).Select(ex => new ExpenseFormDto(
-                ex.Id, 
-                ex.Name, 
-                ex.Date, 
-                ex.Cost, 
-                ex.TypeId, 
+                ex.Id,
+                ex.Name,
+                ex.Date,
+                ex.Cost,
+                ex.TypeId,
                 ex.PlaceId)
             ).FirstOrDefaultAsync();
         }
 
+        /// <summary>
+        /// Returns the ammount of expenses based on the filter
+        /// </summary>
+        /// <param name="from">The starting date of the expenses</param>
+        /// <param name="to">The final date of the expenses</param>
+        /// <param name="types">The expense types</param>
+        /// <param name="places">The expense places</param>
+        /// <returns>The ammount of expenses based on the filter</returns>
+        public async Task<int> GetExpenseCount(DateTime? from, DateTime? to, IEnumerable<int> types, IEnumerable<int> places) {
+            var query = GetBaseQuery(from, to, types, places);
+            return await query.CountAsync();
+        }
+
+        public async Task<IEnumerable<ExpenseChartDto>> GetTop5Dates(DateTime? from, DateTime? to, IEnumerable<int> types, IEnumerable<int> places) {
+            var query = GetBaseQuery(from, to, types, places);
+            return await query.GroupBy(ex => ex.Date)
+                .OrderByDescending(g => g.Sum(ex => ex.Cost))
+                .Take(5)
+                .Select(g => new ExpenseChartDto(g.Key.ToString("yyyy-MM-dd"), g.Sum(ex => ex.Cost)))
+                .ToListAsync();
+        }
     }
 }

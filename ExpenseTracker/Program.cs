@@ -11,13 +11,15 @@ namespace ExpenseTracker {
         [STAThread]
         static void Main(){
             var services = new ServiceCollection();
-            services.AddDbContextFactory<ExpenseContext>();
+            services.AddDbContext<ExpenseContext>();
             services.AddScoped<ExpensesUnitOfWork>();
             services.AddScoped<ExpenseService>();
             services.AddScoped<ExpenseTypeService>();
             services.AddScoped<ExpensePlaceService>();
+            services.AddScoped<ReportService>();
             services.AddTransient<ExpenseDataForm>();
             services.AddTransient<ExpenseListForm>();
+            services.AddTransient<ExpenseReportForm>();
             services.AddTransient<MainForm>();
             Services = services.BuildServiceProvider();
             ApplicationConfiguration.Initialize();

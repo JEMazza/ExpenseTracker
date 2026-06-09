@@ -10,19 +10,19 @@ namespace ExpenseServices.Requests {
 
         public string Valid() {
             if (Date > DateTime.Today) {
-                return "No puede cargarse un gasto a futuro";
+                return Resources.ErrorMessages.ExpenseFormDateError;
             }
             if (string.IsNullOrWhiteSpace(Name)) {
-                return "Ingrese el nombre del gasto";
+                return Resources.ErrorMessages.ExpenseFormNameError;
             }
             if (Cost<=0) {
-                return "No puede existir un gasto menor a 0";
+                return Resources.ErrorMessages.ExpenseFormCostError;
             }
             if (string.IsNullOrWhiteSpace(Type)) {
-                return "Ingrese el tipo de gasto";
+                return Resources.ErrorMessages.ExpenseFormTypeError;
             }
             if (string.IsNullOrWhiteSpace(Place)) {
-                return "Ingrese el lugar de gasto";
+                return Resources.ErrorMessages.ExpenseFormPlaceError;
             }
             return string.Empty;
         }

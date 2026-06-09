@@ -26,16 +26,20 @@ namespace ExpenseServices.Data {
         /// </summary>
         public ExpensePlaceRepository ExpensePlace => _expensePlaces ??= new ExpensePlaceRepository(_context);
 
+        /// <summary>
+        /// Calls SaveChanges()
+        /// </summary>
+        /// <returns></returns>
         public async Task Save() {
             await _context.SaveChangesAsync();
         }
 
         public async Task Commit(IDbContextTransaction tran) {
-            await _context.Database.CommitTransactionAsync();
+            await tran.CommitAsync();
         }
 
         public async Task Rollback(IDbContextTransaction tran) {
-            await tran.CommitAsync();
+            await tran.RollbackAsync();
         }
 
         public async Task<IDbContextTransaction> StartTransaction() {

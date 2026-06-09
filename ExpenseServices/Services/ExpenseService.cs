@@ -159,7 +159,7 @@ namespace ExpenseServices.Services {
                     expenseSheet.Cell(1, 4).Value = "Lugar";
                     expenseSheet.Cell(1, 5).Value = "Tipo";
                     int row = 2;
-                    int pages = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(summary.Total) / 10000));
+                    int pages = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(summary.Expenses) / 10000));
                     for (int page = 1; page <=pages; page++) {
                         expList = await _unit.Expenses.GetExpenses(request.From, request.To, request.Types, request.Places, page, 10000);
                         foreach (ExpenseDto exp in expList) {
@@ -203,6 +203,24 @@ namespace ExpenseServices.Services {
             catch (Exception) {
                 throw;
             }
+        }
+
+        /// <summary>
+        /// Gets the count for the expenses based on the filter
+        /// </summary>
+        /// <param name="request">The expense filter</param>
+        /// <returns>The ammount of expenses</returns>
+        public async Task<int> GetExpensesCount(ExpenseSearchRequest request) {
+            return await _unit.Expenses.GetExpenseCount(request.From, request.To,request.Types,request.Places);
+        }
+
+        /// <summary>
+        /// Returns the top 5 dates of total expense
+        /// </summary>
+        /// <param name="request">The expense filter</param>
+        /// <returns>A collection of name and total expense dates, up to 10 results</returns>
+        public async Task<IEnumerable<ExpenseChartDto>> GetTop5Expenses(ExpenseSearchRequest request) {
+            return await _unit.Expenses.GetTop5Dates(request.From,request.To,request.Types,request.Places);
         }
     }
 }

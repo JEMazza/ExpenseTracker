@@ -92,7 +92,7 @@
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(2, 3, 2, 3);
             groupBox1.Size = new Size(796, 272);
-            groupBox1.TabIndex = 1;
+            groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
             groupBox1.Text = "Busqueda";
             // 
@@ -101,7 +101,7 @@
             btnSearch.Location = new Point(702, 20);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(89, 237);
-            btnSearch.TabIndex = 8;
+            btnSearch.TabIndex = 7;
             btnSearch.Text = "Buscar";
             btnSearch.UseVisualStyleBackColor = true;
             btnSearch.Click += btnSearch_Click;
@@ -130,7 +130,7 @@
             dtpTo.Location = new Point(438, 28);
             dtpTo.Name = "dtpTo";
             dtpTo.Size = new Size(129, 29);
-            dtpTo.TabIndex = 5;
+            dtpTo.TabIndex = 4;
             dtpTo.Visible = false;
             // 
             // dtpFrom
@@ -139,7 +139,7 @@
             dtpFrom.Location = new Point(83, 27);
             dtpFrom.Name = "dtpFrom";
             dtpFrom.Size = new Size(122, 29);
-            dtpFrom.TabIndex = 1;
+            dtpFrom.TabIndex = 2;
             dtpFrom.Visible = false;
             // 
             // lblType
@@ -157,7 +157,7 @@
             chkListType.Location = new Point(51, 85);
             chkListType.Name = "chkListType";
             chkListType.Size = new Size(283, 172);
-            chkListType.TabIndex = 2;
+            chkListType.TabIndex = 5;
             // 
             // chkTo
             // 
@@ -336,7 +336,7 @@
             btnExport.Location = new Point(812, 365);
             btnExport.Name = "btnExport";
             btnExport.Size = new Size(192, 53);
-            btnExport.TabIndex = 12;
+            btnExport.TabIndex = 8;
             btnExport.Text = "Exportar";
             btnExport.UseVisualStyleBackColor = true;
             btnExport.Visible = false;

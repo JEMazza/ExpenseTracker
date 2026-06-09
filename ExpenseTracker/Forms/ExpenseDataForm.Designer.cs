@@ -113,7 +113,7 @@
             numCost.Maximum = new decimal(new int[] { -727379969, 232, 0, 0 });
             numCost.Name = "numCost";
             numCost.Size = new Size(329, 29);
-            numCost.TabIndex = 11;
+            numCost.TabIndex = 2;
             // 
             // cmbType
             // 
@@ -123,7 +123,7 @@
             cmbType.Margin = new Padding(2, 3, 2, 3);
             cmbType.Name = "cmbType";
             cmbType.Size = new Size(330, 29);
-            cmbType.TabIndex = 12;
+            cmbType.TabIndex = 3;
             cmbType.ValueMember = "Id";
             // 
             // btnAction
@@ -133,7 +133,7 @@
             btnAction.Margin = new Padding(2, 3, 2, 3);
             btnAction.Name = "btnAction";
             btnAction.Size = new Size(187, 70);
-            btnAction.TabIndex = 13;
+            btnAction.TabIndex = 5;
             btnAction.Text = "Accion";
             btnAction.UseVisualStyleBackColor = true;
             btnAction.Click += btnAction_Click;
@@ -141,11 +141,11 @@
             // btnBack
             // 
             btnBack.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnBack.Location = new Point(13, 312);
+            btnBack.Location = new Point(11, 312);
             btnBack.Margin = new Padding(2, 3, 2, 3);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(187, 70);
-            btnBack.TabIndex = 14;
+            btnBack.TabIndex = 6;
             btnBack.Text = "Volver";
             btnBack.UseVisualStyleBackColor = true;
             btnBack.Click += btnBack_Click;
@@ -158,7 +158,7 @@
             cmbPlace.Margin = new Padding(2, 3, 2, 3);
             cmbPlace.Name = "cmbPlace";
             cmbPlace.Size = new Size(330, 29);
-            cmbPlace.TabIndex = 15;
+            cmbPlace.TabIndex = 4;
             cmbPlace.ValueMember = "Id";
             // 
             // ExpenseDataForm

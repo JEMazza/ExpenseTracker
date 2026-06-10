@@ -118,93 +118,93 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ExpenseLabelDate" xml:space="preserve">
-    <value>Date</value>
+    <value>Fecha</value>
     <comment>Date label on forms and data grids</comment>
   </data>
   <data name="ExpenseLabelCost" xml:space="preserve">
-    <value>Cost</value>
+    <value>Costo</value>
     <comment>Cost label on forms and data grids</comment>
   </data>
   <data name="ExpenseLabelActionDelete" xml:space="preserve">
-    <value>Delete</value>
+    <value>Borrar</value>
     <comment>Delete action label on forms and data grids</comment>
   </data>
   <data name="ExpenseMessageDeleteWarning" xml:space="preserve">
-    <value>Are you sure you want to delete this expense? 
-This action cannot be reversed.</value>
+    <value>¿Esta seguro que desea eliminar este gasto?
+Esta acción no puede deshacerse.</value>
     <comment>Message for removing an expense</comment>
   </data>
   <data name="ExpenseGroupBoxFilterTitle" xml:space="preserve">
-    <value>Filter</value>
+    <value>Buscar</value>
     <comment>Expense filter title section</comment>
   </data>
   <data name="ExpenseLabelFromInput" xml:space="preserve">
-    <value>From</value>
+    <value>Desde</value>
     <comment>From date label on expense filter form</comment>
   </data>
   <data name="ExpenseLabel" xml:space="preserve">
-    <value>Expenses</value>
+    <value>Gastos</value>
     <comment>Expense label on forms and data grids</comment>
   </data>
   <data name="ExpenseLabelActionModify" xml:space="preserve">
-    <value>Modify</value>
+    <value>Modificar</value>
     <comment>Update expense action label on forms and data grids</comment>
   </data>
   <data name="ExpenseLabelName" xml:space="preserve">
-    <value>Name</value>
+    <value>Nombre</value>
     <comment>Expense name label on forms and data grids</comment>
   </data>
   <data name="ExpenseFormTitleNew" xml:space="preserve">
-    <value>New Expense</value>
+    <value>Nuevo gasto</value>
     <comment>New Expense form title</comment>
   </data>
   <data name="ExpenseLabelPlace" xml:space="preserve">
-    <value>Place</value>
+    <value>Lugar</value>
     <comment>Expense Place label on forms and data grids</comment>
   </data>
   <data name="ExpenseLabelTableAction" xml:space="preserve">
-    <value>Action</value>
+    <value>Acción</value>
     <comment>Action label on data grids</comment>
   </data>
   <data name="ExpenseLabelToInput" xml:space="preserve">
-    <value>To</value>
+    <value>Hasta</value>
     <comment>To date input label on expense filter forms</comment>
   </data>
   <data name="ExpenseLabelType" xml:space="preserve">
-    <value>Type</value>
+    <value>Tipo</value>
     <comment>Expense type label on forms and data grids</comment>
   </data>
   <data name="ExpenseFormTitleUpdate" xml:space="preserve">
-    <value>Update Expense</value>
-    <comment>Modify expense form title</comment>
+    <value>Actualizar gasto</value>
+    <comment>Update expense form title</comment>
   </data>
   <data name="ExpenseLabelPages" xml:space="preserve">
-    <value>Page {0} of {1}</value>
+    <value>Página {0} of {1}</value>
     <comment>Expense pages label</comment>
   </data>
   <data name="ExpenseErrorMessageFilter" xml:space="preserve">
-    <value>The date "From" can't be higher than the date "To"</value>
+    <value>La fecha "Desde" no puede ser mayor a la fecha "Hasta"</value>
     <comment>Error message for filtering expenses.</comment>
   </data>
   <data name="ExpenseLabelFilterAction" xml:space="preserve">
-    <value>Search</value>
+    <value>Buscar</value>
     <comment>Label for filtering expenses</comment>
   </data>
   <data name="ExpenseMessageAddAddSucess" xml:space="preserve">
-    <value>Expense added succesfully.
-Do you wish do add another one?</value>
+    <value>Gasto agregado con éxito.
+¿Desea agregar otro?</value>
     <comment>Message for sucessfully adding an expense.</comment>
   </data>
   <data name="ExpenseMessageUpdateSucess" xml:space="preserve">
-    <value>Expense modified succesfully.</value>
+    <value>Gasto actualizado exitosamente.</value>
     <comment>Message for sucessfully modifing an expense.</comment>
   </data>
   <data name="ExpenseLabelActionAdd" xml:space="preserve">
-    <value>Add</value>
+    <value>Agregar</value>
     <comment>Label for adding expenses</comment>
   </data>
   <data name="ExpenseLabelActionBack" xml:space="preserve">
-    <value>Return</value>
+    <value>Volver</value>
     <comment>Label for Back actions.</comment>
   </data>
   <data name="ExpenseMessageBoxTitleError" xml:space="preserve">
@@ -212,15 +212,15 @@ Do you wish do add another one?</value>
     <comment>Label for MessageBox errors.</comment>
   </data>
   <data name="ExpenseMessageBoxTitleSuccess" xml:space="preserve">
-    <value>Success</value>
+    <value>Éxito</value>
     <comment>Label for MessageBox success.</comment>
   </data>
   <data name="ExpenseMessageExpenseNotFound" xml:space="preserve">
-    <value>The expense searched does not exist.</value>
+    <value>El gasto buscado no existe.</value>
     <comment>Label for MessageBox success.</comment>
   </data>
   <data name="ExpenseMessageException" xml:space="preserve">
-    <value>There has been an error.</value>
+    <value>Ha ocurrido un error.</value>
     <comment>Generic message for errors</comment>
   </data>
 </root>

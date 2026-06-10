@@ -40,7 +40,13 @@ namespace ExpenseTracker.Forms {
 
 
         private async void ExpenseDataForm_Load(object sender, EventArgs e) {
-            this.Text = _id!=-1?Resources.MessagesResource.ExpenseUpdateFormTitle: Resources.MessagesResource.ExpenseNewFormTitle;
+            lblCost.Text = Resources.MessagesResource.ExpenseLabelCost;
+            lblDate.Text = Resources.MessagesResource.ExpenseLabelDate;
+            lblName.Text = Resources.MessagesResource.ExpenseLabelName;
+            lblType.Text = Resources.MessagesResource.ExpenseLabelType;
+            lblPlace.Text = Resources.MessagesResource.ExpenseLabelPlace;
+            btnBack.Text = Resources.MessagesResource.ExpenseLabelActionBack;
+            this.Text = _id!=-1?Resources.MessagesResource.ExpenseFormTitleUpdate : Resources.MessagesResource.ExpenseFormTitleNew;
             cmbPlace.ValueMember = "Id";
             cmbPlace.DisplayMember = "Name";
             cmbType.ValueMember = "Id";
@@ -49,11 +55,11 @@ namespace ExpenseTracker.Forms {
             if (_id != -1) {
                 ExpenseFormDto? formData = await _service.PrepareExpenseForm(_id);
                 if (formData == null) {
-                    MessageBox.Show("El gasto no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Resources.MessagesResource.ExpenseMessageExpenseNotFound, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.Close();
                     return;
                 }
-                btnAction.Text = Resources.MessagesResource.ExpenseModifyActionLabel;
+                btnAction.Text = Resources.MessagesResource.ExpenseLabelActionModify;
                 tBoxName.Text = formData.Name;
                 numCost.Value = Convert.ToDecimal(formData.Price);
                 dtpDate.Value = formData.Date;
@@ -61,7 +67,7 @@ namespace ExpenseTracker.Forms {
                 cmbType.SelectedItem = cmbType.Items.Cast<ExpenseTypeDto>().FirstOrDefault(et => et.Id == formData.Type);
             }
             else {
-                btnAction.Text = Resources.MessagesResource.ExpenseDeleteActionLabel;
+                btnAction.Text = Resources.MessagesResource.ExpenseLabelActionAdd;
             }
         }
 
@@ -83,30 +89,29 @@ namespace ExpenseTracker.Forms {
                 };
                 string msg = request.Valid();
                 if (!string.IsNullOrEmpty(msg)) {
-                    MessageBox.Show(msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(msg, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 if(_id != -1) {
                     await _service.UpdateExpense(_id, request);
-                    msg = "Gasto actualizado correctamente";
-                    MessageBox.Show("Gasto actualizado correctamente", "Exito", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    MessageBox.Show(Resources.MessagesResource.ExpenseMessageUpdateSucess, Resources.MessagesResource.ExpenseMessageBoxTitleSuccess, MessageBoxButtons.OK,MessageBoxIcon.Information);
                     refresh = true;
                     this.Close();
                 }
                 else {
                     await _service.AddExpense(request);
                     refresh = true;
-                    var more = MessageBox.Show("Gasto agregado correctamente. \n ¿Desea añadir otro?", "Exito", MessageBoxButtons.YesNo,MessageBoxIcon.Information);
+                    var more = MessageBox.Show(Resources.MessagesResource.ExpenseMessageAddAddSucess, Resources.MessagesResource.ExpenseMessageBoxTitleSuccess, MessageBoxButtons.YesNo,MessageBoxIcon.Information);
                     if (more == DialogResult.Yes) {
                         await PrepareForm();
                     }
-                    else if (more == DialogResult.No) {
+                    else {
                         this.Close();
                     }
                 }
             }
             catch(Exception ex) {
-                MessageBox.Show("An error occured: "+ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally {
                 btnAction.Enabled = true;

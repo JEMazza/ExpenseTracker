@@ -28,7 +28,7 @@ namespace ExpenseTracker.Forms {
         }
 
         private void UpdateExpViews() {
-            lblExpPage.Text = String.Format(Resources.MessagesResource.ExpensePagesLabel, _page, _totalPages);
+            lblExpPage.Text = String.Format(Resources.MessagesResource.ExpenseLabelPages, _page, _totalPages);
             dgvExpenses.AutoResizeColumns();
         }
 

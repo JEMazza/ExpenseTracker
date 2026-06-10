@@ -27,84 +27,85 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            menuStrip1 = new MenuStrip();
-            gastosToolStripMenuItem = new ToolStripMenuItem();
-            listaToolStripMenuItem = new ToolStripMenuItem();
-            agregarToolStripMenuItem = new ToolStripMenuItem();
-            cerrarToolStripMenuItem = new ToolStripMenuItem();
-            reportesToolStripMenuItem = new ToolStripMenuItem();
-            menuStrip1.SuspendLayout();
+            mainMenuStrip = new MenuStrip();
+            expenseToolStripMenuItem = new ToolStripMenuItem();
+            expenseListToolStripMenuItem = new ToolStripMenuItem();
+            expenseAddToolStripMenuItem = new ToolStripMenuItem();
+            reportsToolStripMenuItem = new ToolStripMenuItem();
+            closeToolStripMenuItem = new ToolStripMenuItem();
+            mainMenuStrip.SuspendLayout();
             SuspendLayout();
             // 
-            // menuStrip1
+            // mainMenuStrip
             // 
-            menuStrip1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { gastosToolStripMenuItem, reportesToolStripMenuItem, cerrarToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1029, 29);
-            menuStrip1.TabIndex = 0;
-            menuStrip1.Text = "menuStrip1";
+            mainMenuStrip.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            mainMenuStrip.Items.AddRange(new ToolStripItem[] { expenseToolStripMenuItem, reportsToolStripMenuItem, closeToolStripMenuItem });
+            mainMenuStrip.Location = new Point(0, 0);
+            mainMenuStrip.Name = "mainMenuStrip";
+            mainMenuStrip.Size = new Size(1029, 29);
+            mainMenuStrip.TabIndex = 0;
+            mainMenuStrip.Text = "menuStrip1";
             // 
-            // gastosToolStripMenuItem
+            // expenseToolStripMenuItem
             // 
-            gastosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { listaToolStripMenuItem, agregarToolStripMenuItem });
-            gastosToolStripMenuItem.Name = "gastosToolStripMenuItem";
-            gastosToolStripMenuItem.Size = new Size(69, 25);
-            gastosToolStripMenuItem.Text = "Gastos";
+            expenseToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { expenseListToolStripMenuItem, expenseAddToolStripMenuItem });
+            expenseToolStripMenuItem.Name = "expenseToolStripMenuItem";
+            expenseToolStripMenuItem.Size = new Size(69, 25);
+            expenseToolStripMenuItem.Text = "Gastos";
             // 
-            // listaToolStripMenuItem
+            // expenseListToolStripMenuItem
             // 
-            listaToolStripMenuItem.Name = "listaToolStripMenuItem";
-            listaToolStripMenuItem.Size = new Size(136, 26);
-            listaToolStripMenuItem.Text = "Lista";
-            listaToolStripMenuItem.Click += listaToolStripMenuItem_Click;
+            expenseListToolStripMenuItem.Name = "expenseListToolStripMenuItem";
+            expenseListToolStripMenuItem.Size = new Size(180, 26);
+            expenseListToolStripMenuItem.Text = "Lista";
+            expenseListToolStripMenuItem.Click += listaToolStripMenuItem_Click;
             // 
-            // agregarToolStripMenuItem
+            // expenseAddToolStripMenuItem
             // 
-            agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
-            agregarToolStripMenuItem.Size = new Size(136, 26);
-            agregarToolStripMenuItem.Text = "Agregar";
-            agregarToolStripMenuItem.Click += agregarToolStripMenuItem_Click;
+            expenseAddToolStripMenuItem.Name = "expenseAddToolStripMenuItem";
+            expenseAddToolStripMenuItem.Size = new Size(180, 26);
+            expenseAddToolStripMenuItem.Text = "Agregar";
+            expenseAddToolStripMenuItem.Click += agregarToolStripMenuItem_Click;
             // 
-            // cerrarToolStripMenuItem
+            // reportsToolStripMenuItem
             // 
-            cerrarToolStripMenuItem.Name = "cerrarToolStripMenuItem";
-            cerrarToolStripMenuItem.Size = new Size(66, 25);
-            cerrarToolStripMenuItem.Text = "Cerrar";
-            cerrarToolStripMenuItem.Click += cerrarToolStripMenuItem_Click;
+            reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
+            reportsToolStripMenuItem.Size = new Size(84, 25);
+            reportsToolStripMenuItem.Text = "Reportes";
+            reportsToolStripMenuItem.Click += reportesToolStripMenuItem_Click;
             // 
-            // reportesToolStripMenuItem
+            // closeToolStripMenuItem
             // 
-            reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
-            reportesToolStripMenuItem.Size = new Size(84, 25);
-            reportesToolStripMenuItem.Text = "Reportes";
-            reportesToolStripMenuItem.Click += reportesToolStripMenuItem_Click;
+            closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            closeToolStripMenuItem.Size = new Size(66, 25);
+            closeToolStripMenuItem.Text = "Cerrar";
+            closeToolStripMenuItem.Click += cerrarToolStripMenuItem_Click;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1029, 630);
-            Controls.Add(menuStrip1);
+            Controls.Add(mainMenuStrip);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            MainMenuStrip = menuStrip1;
+            MainMenuStrip = mainMenuStrip;
             Margin = new Padding(4);
             Name = "MainForm";
             Text = "Menu Principal";
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            Load += MainForm_Load;
+            mainMenuStrip.ResumeLayout(false);
+            mainMenuStrip.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem gastosToolStripMenuItem;
-        private ToolStripMenuItem listaToolStripMenuItem;
-        private ToolStripMenuItem agregarToolStripMenuItem;
-        private ToolStripMenuItem cerrarToolStripMenuItem;
-        private ToolStripMenuItem reportesToolStripMenuItem;
+        private MenuStrip mainMenuStrip;
+        private ToolStripMenuItem expenseToolStripMenuItem;
+        private ToolStripMenuItem expenseListToolStripMenuItem;
+        private ToolStripMenuItem expenseAddToolStripMenuItem;
+        private ToolStripMenuItem closeToolStripMenuItem;
+        private ToolStripMenuItem reportsToolStripMenuItem;
     }
 }

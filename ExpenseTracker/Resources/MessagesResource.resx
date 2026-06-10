@@ -138,7 +138,7 @@ This action cannot be reversed.</value>
     <value>Filter</value>
     <comment>Expense filter title section</comment>
   </data>
-  <data name="ExpenseLabelFromInput" xml:space="preserve">
+  <data name="ExpenseLabelInputFrom" xml:space="preserve">
     <value>From</value>
     <comment>From date label on expense filter form</comment>
   </data>
@@ -166,7 +166,7 @@ This action cannot be reversed.</value>
     <value>Action</value>
     <comment>Action label on data grids</comment>
   </data>
-  <data name="ExpenseLabelToInput" xml:space="preserve">
+  <data name="ExpenseLabelInputTo" xml:space="preserve">
     <value>To</value>
     <comment>To date input label on expense filter forms</comment>
   </data>
@@ -186,7 +186,7 @@ This action cannot be reversed.</value>
     <value>The date "From" can't be higher than the date "To"</value>
     <comment>Error message for filtering expenses.</comment>
   </data>
-  <data name="ExpenseLabelFilterAction" xml:space="preserve">
+  <data name="ExpenseLabelActionFilter" xml:space="preserve">
     <value>Search</value>
     <comment>Label for filtering expenses</comment>
   </data>
@@ -222,5 +222,29 @@ Do you wish do add another one?</value>
   <data name="ExpenseMessageException" xml:space="preserve">
     <value>There has been an error.</value>
     <comment>Generic message for errors</comment>
+  </data>
+  <data name="ExpenseMenuLabelExpenses" xml:space="preserve">
+    <value>Expenses</value>
+    <comment>Menu label for expense</comment>
+  </data>
+  <data name="ExpenseMenuLabelExpenseAdd" xml:space="preserve">
+    <value>Add</value>
+    <comment>Menu label for adding an expense</comment>
+  </data>
+  <data name="ExpenseMenuLabelExpenseList" xml:space="preserve">
+    <value>List</value>
+    <comment>Menu Label for listing expenses</comment>
+  </data>
+  <data name="ExpenseMenuLabelReports" xml:space="preserve">
+    <value>Report</value>
+    <comment>Menu label for reports</comment>
+  </data>
+  <data name="ExpenseMenuLabelClose" xml:space="preserve">
+    <value>Close</value>
+    <comment>Menu label for close</comment>
+  </data>
+  <data name="ExpenseFormTitleMainMenu" xml:space="preserve">
+    <value>Main menu</value>
+    <comment>Main menu form title</comment>
   </data>
 </root>

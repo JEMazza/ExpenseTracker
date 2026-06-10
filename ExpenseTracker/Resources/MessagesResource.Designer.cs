@@ -70,6 +70,15 @@ namespace ExpenseTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Main menu.
+        /// </summary>
+        internal static string ExpenseFormTitleMainMenu {
+            get {
+                return ResourceManager.GetString("ExpenseFormTitleMainMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Expense.
         /// </summary>
         internal static string ExpenseFormTitleNew {
@@ -133,6 +142,15 @@ namespace ExpenseTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        internal static string ExpenseLabelActionFilter {
+            get {
+                return ResourceManager.GetString("ExpenseLabelActionFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Modify.
         /// </summary>
         internal static string ExpenseLabelActionModify {
@@ -160,20 +178,20 @@ namespace ExpenseTracker.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search.
+        ///   Looks up a localized string similar to From.
         /// </summary>
-        internal static string ExpenseLabelFilterAction {
+        internal static string ExpenseLabelInputFrom {
             get {
-                return ResourceManager.GetString("ExpenseLabelFilterAction", resourceCulture);
+                return ResourceManager.GetString("ExpenseLabelInputFrom", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to From.
+        ///   Looks up a localized string similar to To.
         /// </summary>
-        internal static string ExpenseLabelFromInput {
+        internal static string ExpenseLabelInputTo {
             get {
-                return ResourceManager.GetString("ExpenseLabelFromInput", resourceCulture);
+                return ResourceManager.GetString("ExpenseLabelInputTo", resourceCulture);
             }
         }
         
@@ -214,20 +232,56 @@ namespace ExpenseTracker.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To.
-        /// </summary>
-        internal static string ExpenseLabelToInput {
-            get {
-                return ResourceManager.GetString("ExpenseLabelToInput", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Type.
         /// </summary>
         internal static string ExpenseLabelType {
             get {
                 return ResourceManager.GetString("ExpenseLabelType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        internal static string ExpenseMenuLabelClose {
+            get {
+                return ResourceManager.GetString("ExpenseMenuLabelClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        internal static string ExpenseMenuLabelExpenseAdd {
+            get {
+                return ResourceManager.GetString("ExpenseMenuLabelExpenseAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List.
+        /// </summary>
+        internal static string ExpenseMenuLabelExpenseList {
+            get {
+                return ResourceManager.GetString("ExpenseMenuLabelExpenseList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expenses.
+        /// </summary>
+        internal static string ExpenseMenuLabelExpenses {
+            get {
+                return ResourceManager.GetString("ExpenseMenuLabelExpenses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report.
+        /// </summary>
+        internal static string ExpenseMenuLabelReports {
+            get {
+                return ResourceManager.GetString("ExpenseMenuLabelReports", resourceCulture);
             }
         }
         

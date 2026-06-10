@@ -37,5 +37,15 @@ namespace ExpenseTracker
                 }
             }
         }
+
+        private void MainForm_Load(object sender, EventArgs e) {
+            this.Text = Resources.MessagesResource.ExpenseFormTitleMainMenu;
+            expenseToolStripMenuItem.Text = Resources.MessagesResource.ExpenseLabel;
+            expenseListToolStripMenuItem.Text = Resources.MessagesResource.ExpenseMenuLabelExpenseList;
+            expenseAddToolStripMenuItem.Text = Resources.MessagesResource.ExpenseMenuLabelExpenseAdd;
+            reportsToolStripMenuItem.Text = Resources.MessagesResource.ExpenseMenuLabelReports;
+            closeToolStripMenuItem.Text = Resources.MessagesResource.ExpenseMenuLabelClose;
+            
+        }
     }
 }

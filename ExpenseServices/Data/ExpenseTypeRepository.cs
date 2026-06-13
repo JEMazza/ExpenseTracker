@@ -57,7 +57,7 @@ namespace ExpenseServices.Data {
                 "FROM Types t " +
                 "INNER JOIN Expenses e ON t.Id = e.TypeId";
             if (filter) {
-                query += $@" WHERE";
+                query += $@" WHERE ";
                 if (from.HasValue) {
                     query += $@" e.Date >= @From ";
                     parameters.Add(new SqliteParameter("@From", from));

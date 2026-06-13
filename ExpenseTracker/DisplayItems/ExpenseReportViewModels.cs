@@ -1,14 +1,16 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace ExpenseTracker.DisplayItems {
     public class ExpenseReportViewModels {
 
-        [DisplayName("Nombre")]
+        [Display(Name = "ExpenseLabelName", ResourceType = typeof(Resources.MessagesResource))]
         public required string Name { get; set; }
 
-        [DisplayName("Total")]
-        public required double Total { get; set; }
-        [DisplayName("Cantidad")]
-        public required int Count { get; set; }
+        [Display(Name = "ExpenseLabelTotal", ResourceType = typeof(Resources.MessagesResource))]
+        public required string Total { get; set; }
+
+        [Display(Name = "ExpenseLabelCount", ResourceType = typeof(Resources.MessagesResource))]
+        public required string Count { get; set; }
     }
 }

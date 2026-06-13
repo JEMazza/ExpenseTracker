@@ -295,4 +295,24 @@ Do you wish do add another one?</value>
     <value>Expense removed succesfuly.</value>
     <comment>Message for removing an expense</comment>
   </data>
+  <data name="ExpenseLabelCount" xml:space="preserve">
+    <value>Count</value>
+    <comment>Count label on forms and data grids</comment>
+  </data>
+  <data name="ExpenseFormTitleReport" xml:space="preserve">
+    <value>Report of expenses</value>
+    <comment>Expense report form title</comment>
+  </data>
+  <data name="ExpenseFileNameReport" xml:space="preserve">
+    <value>ExpenseReport_{0}</value>
+    <comment>Filename for the expense report file</comment>
+  </data>
+  <data name="ExpenseMessageReportExportSuccess" xml:space="preserve">
+    <value>Report exported sucessfully.</value>
+    <comment>Message for succesfully exporting the report</comment>
+  </data>
+  <data name="ExpenseFileNameExpenses" xml:space="preserve">
+    <value>Expenses_{0}</value>
+    <comment>Filename for the expenses file</comment>
+  </data>
 </root>

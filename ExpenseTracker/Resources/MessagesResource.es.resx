@@ -249,6 +249,21 @@ Esta acción no puede deshacerse.</value>
     <value>Aviso</value>
   </data>
   <data name="ExpenseMessageRemoveSuccess" xml:space="preserve">
-    <value>Gasto eliminado exitosamente</value>
+    <value>Gasto eliminado exitosamente.</value>
+  </data>
+  <data name="ExpenseLabelCount" xml:space="preserve">
+    <value>Cantidad</value>
+  </data>
+  <data name="ExpenseFormTitleReport" xml:space="preserve">
+    <value>Reporte de gastos</value>
+  </data>
+  <data name="ExpenseFileNameReport" xml:space="preserve">
+    <value>ReporteGastos_{0}</value>
+  </data>
+  <data name="ExpenseMessageReportExportSuccess" xml:space="preserve">
+    <value>Reporte exportado exitosamente.</value>
+  </data>
+  <data name="ExpenseFileNameExpenses" xml:space="preserve">
+    <value>Gastos_{0}</value>
   </data>
 </root>

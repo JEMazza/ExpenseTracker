@@ -70,6 +70,24 @@ namespace ExpenseTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expenses_{0}.
+        /// </summary>
+        public static string ExpenseFileNameExpenses {
+            get {
+                return ResourceManager.GetString("ExpenseFileNameExpenses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ExpenseReport_{0}.
+        /// </summary>
+        public static string ExpenseFileNameReport {
+            get {
+                return ResourceManager.GetString("ExpenseFileNameReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to List of expenses.
         /// </summary>
         public static string ExpenseFormTitleListExpenses {
@@ -93,6 +111,15 @@ namespace ExpenseTracker.Resources {
         public static string ExpenseFormTitleNew {
             get {
                 return ResourceManager.GetString("ExpenseFormTitleNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report of expenses.
+        /// </summary>
+        public static string ExpenseFormTitleReport {
+            get {
+                return ResourceManager.GetString("ExpenseFormTitleReport", resourceCulture);
             }
         }
         
@@ -201,6 +228,15 @@ namespace ExpenseTracker.Resources {
         public static string ExpenseLabelCost {
             get {
                 return ResourceManager.GetString("ExpenseLabelCost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Count.
+        /// </summary>
+        public static string ExpenseLabelCount {
+            get {
+                return ResourceManager.GetString("ExpenseLabelCount", resourceCulture);
             }
         }
         
@@ -446,6 +482,15 @@ namespace ExpenseTracker.Resources {
         public static string ExpenseMessageRemoveSuccess {
             get {
                 return ResourceManager.GetString("ExpenseMessageRemoveSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report exported sucessfully..
+        /// </summary>
+        public static string ExpenseMessageReportExportSuccess {
+            get {
+                return ResourceManager.GetString("ExpenseMessageReportExportSuccess", resourceCulture);
             }
         }
         

@@ -205,10 +205,10 @@
             // 
             placeTab.Controls.Add(placeGroupPlot);
             placeTab.Controls.Add(dgvPlaces);
-            placeTab.Location = new Point(4, 30);
+            placeTab.Location = new Point(4, 24);
             placeTab.Name = "placeTab";
             placeTab.Padding = new Padding(3);
-            placeTab.Size = new Size(1102, 555);
+            placeTab.Size = new Size(1102, 561);
             placeTab.TabIndex = 1;
             placeTab.Text = "Lugares";
             placeTab.UseVisualStyleBackColor = true;
@@ -239,9 +239,9 @@
             // 
             typeTab.Controls.Add(typeGroupPlot);
             typeTab.Controls.Add(dgvTypes);
-            typeTab.Location = new Point(4, 30);
+            typeTab.Location = new Point(4, 24);
             typeTab.Name = "typeTab";
-            typeTab.Size = new Size(1102, 555);
+            typeTab.Size = new Size(1102, 561);
             typeTab.TabIndex = 2;
             typeTab.Text = "Tipo";
             typeTab.UseVisualStyleBackColor = true;
@@ -273,7 +273,7 @@
             // btnExport
             // 
             btnExport.Enabled = false;
-            btnExport.Location = new Point(464, 39);
+            btnExport.Location = new Point(427, 43);
             btnExport.Name = "btnExport";
             btnExport.Size = new Size(153, 73);
             btnExport.TabIndex = 3;
@@ -294,6 +294,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "ExpenseReportForm";
             Text = "ExpenseReportForm";
+            Load += ExpenseReportForm_Load;
             gBoxSearch.ResumeLayout(false);
             gBoxSearch.PerformLayout();
             reportTab.ResumeLayout(false);

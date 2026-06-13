@@ -2,7 +2,6 @@
 using ExpenseServices.Services;
 using ExpenseTracker.DisplayItems;
 using ScottPlot;
-using ScottPlot.Plottables;
 using System.ComponentModel;
 using System.Data;
 
@@ -25,6 +24,64 @@ namespace ExpenseTracker.Forms {
             _typeServ = typeServ;
             _reportService = reportService;
             InitializeComponent();
+        }
+
+        private void ExpenseReportForm_Load(object sender, EventArgs e) {
+            btnSearch.Text = Resources.MessagesResource.ExpenseLabelActionFilter;
+            btnExpNext.Text = Resources.MessagesResource.ExpenseLabelActionNext;
+            btnExpPrevious.Text = Resources.MessagesResource.ExpenseLabelActionPrevious;
+            btnExport.Text = Resources.MessagesResource.ExpenseLabelActionExport;
+            chkFrom.Text = Resources.MessagesResource.ExpenseLabelInputFrom;
+            chkTo.Text = Resources.MessagesResource.ExpenseLabelInputTo;
+            reportTab.TabPages[0].Text = Resources.MessagesResource.ExpenseLabel;
+            reportTab.TabPages[1].Text = Resources.MessagesResource.ExpenseLabelPlace;
+            reportTab.TabPages[2].Text = Resources.MessagesResource.ExpenseLabelType;
+            this.Text=Resources.MessagesResource.ExpenseFormTitleListExpenses;
+        }
+
+        private void PrepareExpColumns() {
+            if (dgvExpenses.Columns["Date"] != null) {
+                dgvExpenses.Columns["Date"].HeaderText = Resources.MessagesResource.ExpenseLabelDate;
+            }
+            if (dgvExpenses.Columns["Name"] != null) {
+                dgvExpenses.Columns["Name"].HeaderText = Resources.MessagesResource.ExpenseLabelName;
+            }
+            if (dgvExpenses.Columns["Cost"] != null) {
+                dgvExpenses.Columns["Cost"].HeaderText = Resources.MessagesResource.ExpenseLabelCost;
+            }
+            if (dgvExpenses.Columns["Place"] != null) {
+                dgvExpenses.Columns["Place"].HeaderText = Resources.MessagesResource.ExpenseLabelPlace;
+            }
+            if (dgvExpenses.Columns["Type"] != null) {
+                dgvExpenses.Columns["Type"].HeaderText = Resources.MessagesResource.ExpenseLabelType;
+            }
+            dgvExpenses.AutoResizeColumns();
+        }
+
+        private void PrepareTypeAndPlaceColumns() {
+            if (dgvPlaces.Columns["Name"] != null) {
+                dgvPlaces.Columns["Name"].HeaderText=Resources.MessagesResource.ExpenseLabelName;
+            }
+            if (dgvPlaces.Columns["Total"] != null) {
+                dgvPlaces.Columns["Total"].HeaderText=Resources.MessagesResource.ExpenseLabelTotal;
+            }
+            if (dgvPlaces.Columns["Count"] != null) {
+                dgvPlaces.Columns["Count"].HeaderText = Resources.MessagesResource.ExpenseLabelCount;
+            }
+            if (dgvTypes.Columns["Name"] != null) {
+                dgvTypes.Columns["Name"].HeaderText = Resources.MessagesResource.ExpenseLabelName;
+            }
+            if (dgvTypes.Columns["Total"] != null) {
+                dgvTypes.Columns["Total"].HeaderText = Resources.MessagesResource.ExpenseLabelTotal;
+            }
+            if (dgvTypes.Columns["Count"] != null) {
+                dgvTypes.Columns["Count"].HeaderText = Resources.MessagesResource.ExpenseLabelCount;
+            }
+            reportTab.SelectedTab = placeTab;
+            dgvPlaces.AutoResizeColumns();
+            reportTab.SelectedTab = typeTab;
+            dgvTypes.AutoResizeColumns();
+            reportTab.SelectedTab = expTab;
         }
 
         private void UpdateExpViews() {
@@ -50,7 +107,7 @@ namespace ExpenseTracker.Forms {
             };
             string msg = request.Valid();
             if (!string.IsNullOrWhiteSpace(msg)) {
-                MessageBox.Show(msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(msg, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             _filter = request;
@@ -80,10 +137,10 @@ namespace ExpenseTracker.Forms {
                     Place = e.Place,
                     Type = e.Type,
                     Name = e.Name,
-                    Cost = $"${e.Price}"
+                    Cost = $"${e.Price:N2}"
                 }).ToList());
-                dgvTypes.DataSource = new BindingList<ExpenseReportViewModels>(types.Select(et => new ExpenseReportViewModels { Count = et.Count, Name = et.Name, Total = et.Total }).ToList());
-                dgvPlaces.DataSource = new BindingList<ExpenseReportViewModels>(places.Select(et => new ExpenseReportViewModels { Count = et.Count, Name = et.Name, Total = et.Total }).ToList());
+                dgvTypes.DataSource = new BindingList<ExpenseReportViewModels>(types.Select(et => new ExpenseReportViewModels { Count = et.Count.ToString(), Name = et.Name, Total = $"${et.Total:N2}" }).ToList());
+                dgvPlaces.DataSource = new BindingList<ExpenseReportViewModels>(places.Select(et => new ExpenseReportViewModels { Count = et.Count.ToString(), Name = et.Name, Total = $"${et.Total:N2}" }).ToList());
                 int i = 0;
                 var palette = new ScottPlot.Palettes.Category10();
                 var typeData = new List<PieSlice>();
@@ -113,7 +170,7 @@ namespace ExpenseTracker.Forms {
                 if (places.Count() > 9) {
                     placeData.Add(new() {
                         Value = places.Skip(9).Sum(p => p.Total),
-                        FillColor = ScottPlot.Colors.Gray,
+                        FillColor = ScottPlot.Color.Gray(3),
                         LegendText = "Others",
                     });
                 }
@@ -140,25 +197,25 @@ namespace ExpenseTracker.Forms {
                 typeGroupPlot.Enabled = false;
                 var barPlot = expenseTop10Plot.Plot.Add.Bars(expData.ToArray());
                 barPlot.Horizontal = true;
-                expenseTop10Plot.Plot.Axes.SetLimitsX(0, expChart.Max(ec => ec.Total) + 350);
-                expenseTop10Plot.Plot.Axes.SetLimitsY(0, i - 1);
+                if (expChart.Any()) {
+                    expenseTop10Plot.Plot.Axes.SetLimitsX(0, expChart.Max(ec => ec.Total) + 450);
+                    expenseTop10Plot.Plot.Axes.SetLimitsY(0, i - 1);
+                }
                 expenseTop10Plot.Refresh();
+                expenseTop10Plot.Plot.HideGrid();
                 expenseTop10Plot.Enabled = false;
+                reportTab.Visible = true;                
                 UpdateExpViews();
-                dgvTypes.AutoResizeColumns();
-                dgvPlaces.AutoResizeColumns();
-                dgvExpenses.Refresh();
-                dgvPlaces.Refresh();
-                dgvTypes.Refresh();
+                PrepareExpColumns();
+                PrepareTypeAndPlaceColumns();
                 btnExpNext.Visible = _total > 25;
                 btnExpNext.Enabled = _total > 25;
-                reportTab.Visible = true;
-                reportTab.Refresh();
                 btnExport.Visible = true;
                 btnExport.Enabled = true;
+                this.Refresh();
             }
             catch (Exception ex) {
-                MessageBox.Show("An error occured: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally {
                 System.Windows.Forms.Cursor.Current = Cursors.Default;
@@ -185,7 +242,7 @@ namespace ExpenseTracker.Forms {
             }
             catch (Exception ex) {
                 _page--;
-                MessageBox.Show("An error occured: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally {
                 System.Windows.Forms.Cursor.Current = Cursors.Default;
@@ -212,7 +269,7 @@ namespace ExpenseTracker.Forms {
             }
             catch (Exception ex) {
                 _page++;
-                MessageBox.Show("An error occured: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally {
                 btnExpPrevious.Enabled = (_page != 1);
@@ -226,8 +283,8 @@ namespace ExpenseTracker.Forms {
             bool reenableNext = false;
             bool reenablePrevious = false;
             try {
-                btnSearch.Visible = false;
                 btnSearch.Enabled = false;
+                btnExport.Enabled = false;
                 if (btnExpNext.Visible) {
                     btnExpNext.Enabled = false;
                     reenableNext = true;
@@ -236,10 +293,10 @@ namespace ExpenseTracker.Forms {
                     btnExpPrevious.Enabled = false;
                     reenablePrevious = true;
                 }
-                string fileName = "ReporteGastos_" + DateTime.Now.ToString("yyyyMMdd-HHmmss");
+                string fileName = String.Format(Resources.MessagesResource.ExpenseFileNameReport, DateTime.Now.ToString("yyyyMMdd-HHmmss"));
                 SaveFileDialog saveDialog = new SaveFileDialog();
                 saveDialog.Filter = "*.xls | *.xlsx";
-                saveDialog.Title = "Elija el lugar de exportacion";
+                saveDialog.Title = Resources.MessagesResource.ExpenseExportFileDialogTitle;
                 saveDialog.FileName = fileName;
                 var saveResult = saveDialog.ShowDialog();
                 if (saveResult == DialogResult.OK) {
@@ -250,13 +307,14 @@ namespace ExpenseTracker.Forms {
                             await data.CopyToAsync(file);
                         }
                     }
-                    MessageBox.Show("Gastos exportados con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(Resources.MessagesResource.ExpenseMessageReportExportSuccess, Resources.MessagesResource.ExpenseMessageBoxTitleSuccess, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
             }
             catch (Exception ex) {
-                MessageBox.Show("An error occured: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }finally {
+                MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally {
                 UseWaitCursor = false;
                 System.Windows.Forms.Cursor.Current = Cursors.Default;
                 if (reenableNext) {
@@ -267,9 +325,8 @@ namespace ExpenseTracker.Forms {
                 }
                 btnSearch.Enabled = true;
                 btnExport.Enabled = true;
-                btnSearch.Visible = true;
-                btnSearch.Enabled = true;
             }
         }
+
     }
 }

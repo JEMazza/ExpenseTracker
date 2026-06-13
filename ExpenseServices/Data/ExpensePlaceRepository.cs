@@ -53,7 +53,7 @@ namespace ExpenseServices.Data {
                 "FROM Places p " +
                 "INNER JOIN Expenses e ON p.Id = e.PlaceId";
             if (filter) {
-                query += $@" WHERE";
+                query += $@" WHERE ";
                 if (from.HasValue) {
                     query += $@" e.Date >= @From ";
                     parameters.Add(new SqliteParameter("@From", from));

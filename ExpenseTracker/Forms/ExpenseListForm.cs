@@ -29,6 +29,21 @@ namespace ExpenseTracker.Forms {
         }
 
         private void PrepareColumns() {
+            if (dgvExpenses.Columns["Date"] != null) {
+                dgvExpenses.Columns["Date"].HeaderText = Resources.MessagesResource.ExpenseLabelDate;
+            }
+            if (dgvExpenses.Columns["Name"] != null) {
+                dgvExpenses.Columns["Name"].HeaderText = Resources.MessagesResource.ExpenseLabelName;
+            }
+            if (dgvExpenses.Columns["Cost"] != null) {
+                dgvExpenses.Columns["Cost"].HeaderText = Resources.MessagesResource.ExpenseLabelCost;
+            }
+            if (dgvExpenses.Columns["Place"] != null) {
+                dgvExpenses.Columns["Place"].HeaderText = Resources.MessagesResource.ExpenseLabelPlace;
+            }
+            if (dgvExpenses.Columns["Type"] != null) {
+                dgvExpenses.Columns["Type"].HeaderText = Resources.MessagesResource.ExpenseLabelType;
+            }
             if (dgvExpenses.Columns["UpdateExp"] == null) {
                 dgvExpenses.Columns.Add(new DataGridViewButtonColumn() {
                     Name = "UpdateExp",
@@ -349,7 +364,8 @@ namespace ExpenseTracker.Forms {
                 reenablePrevious = true;
             }
             try {
-                string fileName = Resources.MessagesResource.ExpenseLabel + "_" + DateTime.Now.ToString("yyyyMMdd-HHmmss");
+                
+                string fileName = String.Format(Resources.MessagesResource.ExpenseFileNameExpenses, DateTime.Now.ToString("yyyyMMdd-HHmmss"));
                 SaveFileDialog saveDialog = new SaveFileDialog();
                 saveDialog.Filter = "*.xls | *.xlsx";
                 saveDialog.Title = Resources.MessagesResource.ExpenseExportFileDialogTitle;

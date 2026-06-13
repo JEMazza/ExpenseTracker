@@ -1,18 +1,10 @@
-﻿using DocumentFormat.OpenXml.Office2010.Excel;
-using ExpenseServices.DTOs;
+﻿using ExpenseServices.DTOs;
 using ExpenseServices.Requests;
 using ExpenseServices.Services;
 using ExpenseTracker.DisplayItems;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace ExpenseTracker.Forms {
     public partial class ExpenseListForm : Form {
@@ -40,16 +32,16 @@ namespace ExpenseTracker.Forms {
             if (dgvExpenses.Columns["UpdateExp"] == null) {
                 dgvExpenses.Columns.Add(new DataGridViewButtonColumn() {
                     Name = "UpdateExp",
-                    HeaderText = "Acciones",
-                    Text = "Modificar",
+                    HeaderText = Resources.MessagesResource.ExpenseLabelTableAction,
+                    Text = Resources.MessagesResource.ExpenseLabelActionModify,
                     UseColumnTextForButtonValue = true,
                 });
             }
             if (dgvExpenses.Columns["RemoveExp"] == null) {
                 dgvExpenses.Columns.Add(new DataGridViewButtonColumn() {
                     Name = "RemoveExp",
-                    HeaderText = "",
-                    Text = "Eliminar",
+                    HeaderText = string.Empty,
+                    Text = Resources.MessagesResource.ExpenseLabelActionDelete,
                     UseColumnTextForButtonValue = true,
                 });
             }
@@ -92,14 +84,14 @@ namespace ExpenseTracker.Forms {
             };
             string msg = filter.Valid();
             if (!string.IsNullOrEmpty(msg)) {
-                MessageBox.Show(msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(msg, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return null;
             }
             return filter;
         }
 
         private void UpdatePages() {
-            lblPages.Text = $"Página {_page} de {_pages}";
+            lblPages.Text = String.Format(Resources.MessagesResource.ExpenseLabelPages, _page, _pages);
         }
 
         private async Task<bool> LoadExpenses(ExpenseOrderEnum order = ExpenseOrderEnum.OrderByDate) {
@@ -111,14 +103,14 @@ namespace ExpenseTracker.Forms {
             if (_filter == null) {
                 return false;
             }
-            var res = await _service.GetExpenses(_filter, _page, _size,order);
+            var res = await _service.GetExpenses(_filter, _page, _size, order);
             dgvExpenses.DataSource = new BindingList<ExpenseDetailViewModel>(res.Select(e => new ExpenseDetailViewModel {
                 Id = e.Id,
                 Date = e.Date,
                 Place = e.Place,
                 Type = e.Type,
                 Name = e.Name,
-                Cost = $"${e.Price}"
+                Cost = $"${e.Price:N2}"
             }).ToList());
             PrepareColumns();
             dgvExpenses.AutoResizeColumns();
@@ -141,9 +133,24 @@ namespace ExpenseTracker.Forms {
             gBoxSummary.Visible = true;
         }
 
-
-
         private async void ExpenseListForm_Load(object sender, EventArgs e) {
+            this.Text = Resources.MessagesResource.ExpenseFormTitleListExpenses;
+            addToolStripMenuItem.Text = Resources.MessagesResource.ExpenseMenuLabelExpenseAdd;
+            closeToolStripMenuItem.Text = Resources.MessagesResource.ExpenseMenuLabelClose;
+            gBoxFilter.Text = Resources.MessagesResource.ExpenseGroupBoxFilterTitle;
+            gBoxSummary.Text = Resources.MessagesResource.ExpenseLabelSummary;
+            chkFrom.Text = Resources.MessagesResource.ExpenseLabelInputFrom;
+            chkTo.Text = Resources.MessagesResource.ExpenseLabelInputTo;
+            lblType.Text = Resources.MessagesResource.ExpenseLabelType;
+            lblPlace.Text = Resources.MessagesResource.ExpenseLabelPlace;
+            lblTotal.Text = Resources.MessagesResource.ExpenseLabelTotal;
+            lblExpense.Text = Resources.MessagesResource.ExpenseLabelExpenses;
+            lblPlaceWithMostExpenses.Text = Resources.MessagesResource.ExpenseLabelPlaceWithMostExpenses;
+            lblTypeWithMostExpenses.Text = Resources.MessagesResource.ExpenseLabelTypeWithMostExpenses;
+            btnNext.Text = Resources.MessagesResource.ExpenseLabelActionNext;
+            btnPrevious.Text = Resources.MessagesResource.ExpenseLabelActionPrevious;
+            btnExport.Text = Resources.MessagesResource.ExpenseLabelActionExport;
+            btnSearch.Text = Resources.MessagesResource.ExpenseLabelActionFilter;
             await LoadLists();
         }
 
@@ -171,7 +178,7 @@ namespace ExpenseTracker.Forms {
 
             }
             catch (Exception ex) {
-                MessageBox.Show("An error ocurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally {
                 btnSearch.Enabled = true;
@@ -214,7 +221,7 @@ namespace ExpenseTracker.Forms {
                 UpdatePages();
             }
             catch (Exception ex) {
-                MessageBox.Show("An error ocurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally {
                 btnNext.Enabled = true;
@@ -235,7 +242,7 @@ namespace ExpenseTracker.Forms {
                 UpdatePages();
             }
             catch (Exception ex) {
-                MessageBox.Show("An error ocurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally {
                 btnPrevious.Enabled = true;
@@ -255,14 +262,14 @@ namespace ExpenseTracker.Forms {
             if (e.RowIndex == -1 && dgvExpenses.Columns[e.ColumnIndex].Index < 5) {
                 //Order
                 int newSort = e.ColumnIndex;
-                if(newSort != sortIndex) {
+                if (newSort != sortIndex) {
                     sortIndex = newSort;
                     _asc = true;
                 }
                 else {
-                    _asc=!_asc;
+                    _asc = !_asc;
                 }
-                ExpenseOrderEnum order=ExpenseOrderEnum.OrderByDate;
+                ExpenseOrderEnum order = ExpenseOrderEnum.OrderByDate;
                 switch (sortIndex) {
                     case 2:
                         order = _asc ? ExpenseOrderEnum.OrderByDate : ExpenseOrderEnum.OrderByDateDesc;
@@ -293,7 +300,7 @@ namespace ExpenseTracker.Forms {
                 //Remove
                 else if (dgvExpenses.Columns[e.ColumnIndex].Name == "RemoveExp") {
                     var exp = dgvExpenses.Rows[e.RowIndex].DataBoundItem as ExpenseDetailViewModel;
-                    var confirm = MessageBox.Show("¿Esta seguro de eliminar este gasto? \n Esta acción no puede revertirse", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    var confirm = MessageBox.Show(Resources.MessagesResource.ExpenseMessageDeleteWarning, Resources.MessagesResource.ExpenseMessageBoxTitleWarning, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (confirm == DialogResult.Yes) {
                         try {
                             dgvExpenses.Enabled = false;
@@ -302,7 +309,7 @@ namespace ExpenseTracker.Forms {
                             btnPrevious.Enabled = false;
                             bool removed = await _service.RemoveExpense(exp.Id);
                             if (removed) {
-                                MessageBox.Show("Gasto eliminado", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show(Resources.MessagesResource.ExpenseMessageBoxTitleWarning, Resources.MessagesResource.ExpenseMessageBoxTitleSuccess, MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 int oldPages = _pages;
                                 await LoadSummary();
                                 if (_pages < oldPages) {
@@ -311,11 +318,11 @@ namespace ExpenseTracker.Forms {
                                 await LoadExpenses();
                             }
                             else {
-                                MessageBox.Show("El gasto no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show(Resources.MessagesResource.ExpenseMessageExpenseNotFound, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         catch (Exception ex) {
-                            MessageBox.Show("An error ocurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         finally {
                             dgvExpenses.Enabled = true;
@@ -342,13 +349,13 @@ namespace ExpenseTracker.Forms {
                 reenablePrevious = true;
             }
             try {
-                string fileName = "Gastos_"+DateTime.Now.ToString("yyyyMMdd-HHmmss");
+                string fileName = Resources.MessagesResource.ExpenseLabel + "_" + DateTime.Now.ToString("yyyyMMdd-HHmmss");
                 SaveFileDialog saveDialog = new SaveFileDialog();
                 saveDialog.Filter = "*.xls | *.xlsx";
-                saveDialog.Title = "Elija el lugar de exportacion";
+                saveDialog.Title = Resources.MessagesResource.ExpenseExportFileDialogTitle;
                 saveDialog.FileName = fileName;
                 var saveResult = saveDialog.ShowDialog();
-                if(saveResult == DialogResult.OK) {
+                if (saveResult == DialogResult.OK) {
                     UseWaitCursor = true;
                     Cursor.Current = Cursors.WaitCursor;
                     using (var file = new FileStream(saveDialog.FileName, FileMode.Create, FileAccess.Write)) {
@@ -356,11 +363,11 @@ namespace ExpenseTracker.Forms {
                             await data.CopyToAsync(file);
                         }
                     }
-                    MessageBox.Show("Gastos exportados con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(Resources.MessagesResource.ExpenseMessageExportSuccess, Resources.MessagesResource.ExpenseMessageBoxTitleSuccess, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            catch(Exception ex) {
-                MessageBox.Show("An error ocurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex) {
+                MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally {
                 UseWaitCursor = false;
@@ -375,5 +382,10 @@ namespace ExpenseTracker.Forms {
                 btnExport.Enabled = true;
             }
         }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e) {
+            this.Close();
+        }
+
     }
 }

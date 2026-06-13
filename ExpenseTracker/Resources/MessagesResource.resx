@@ -126,13 +126,13 @@
     <comment>Cost label on forms and data grids</comment>
   </data>
   <data name="ExpenseLabelActionDelete" xml:space="preserve">
-    <value>Delete</value>
+    <value>Remove</value>
     <comment>Delete action label on forms and data grids</comment>
   </data>
   <data name="ExpenseMessageDeleteWarning" xml:space="preserve">
-    <value>Are you sure you want to delete this expense? 
+    <value>Are you sure you want to remove this expense? 
 This action cannot be reversed.</value>
-    <comment>Message for removing an expense</comment>
+    <comment>Message to confirm the removal of an expense</comment>
   </data>
   <data name="ExpenseGroupBoxFilterTitle" xml:space="preserve">
     <value>Filter</value>
@@ -182,15 +182,11 @@ This action cannot be reversed.</value>
     <value>Page {0} of {1}</value>
     <comment>Expense pages label</comment>
   </data>
-  <data name="ExpenseErrorMessageFilter" xml:space="preserve">
-    <value>The date "From" can't be higher than the date "To"</value>
-    <comment>Error message for filtering expenses.</comment>
-  </data>
   <data name="ExpenseLabelActionFilter" xml:space="preserve">
     <value>Search</value>
     <comment>Label for filtering expenses</comment>
   </data>
-  <data name="ExpenseMessageAddAddSucess" xml:space="preserve">
+  <data name="ExpenseMessageAddSuccess" xml:space="preserve">
     <value>Expense added succesfully.
 Do you wish do add another one?</value>
     <comment>Message for sucessfully adding an expense.</comment>
@@ -246,5 +242,57 @@ Do you wish do add another one?</value>
   <data name="ExpenseFormTitleMainMenu" xml:space="preserve">
     <value>Main menu</value>
     <comment>Main menu form title</comment>
+  </data>
+  <data name="ExpenseFormTitleListExpenses" xml:space="preserve">
+    <value>List of expenses</value>
+    <comment>Expense List form title</comment>
+  </data>
+  <data name="ExpenseLabelActionExport" xml:space="preserve">
+    <value>Export</value>
+    <comment>Label for export action</comment>
+  </data>
+  <data name="ExpenseExportFileDialogTitle" xml:space="preserve">
+    <value>Select where the expense file will be saved on</value>
+    <comment>Dialog title for the export action</comment>
+  </data>
+  <data name="ExpenseLabelPlaceWithMostExpenses" xml:space="preserve">
+    <value>Place with most expenses</value>
+    <comment>Label for place with most expenses</comment>
+  </data>
+  <data name="ExpenseLabelTypeWithMostExpenses" xml:space="preserve">
+    <value>Type with most expenses</value>
+    <comment>Label for type with most expenses</comment>
+  </data>
+  <data name="ExpenseLabelSummary" xml:space="preserve">
+    <value>Summary</value>
+    <comment>Label for summary of expense filter</comment>
+  </data>
+  <data name="ExpenseMessageExportSuccess" xml:space="preserve">
+    <value>Expenses exported succesfully.</value>
+    <comment>Message for successfuly exporting expenses</comment>
+  </data>
+  <data name="ExpenseLabelTotal" xml:space="preserve">
+    <value>Total</value>
+    <comment>Label for Total in summary</comment>
+  </data>
+  <data name="ExpenseLabelExpenses" xml:space="preserve">
+    <value>Expenses</value>
+    <comment>Label for expenses in summary</comment>
+  </data>
+  <data name="ExpenseLabelActionNext" xml:space="preserve">
+    <value>Next</value>
+    <comment>Label for next action</comment>
+  </data>
+  <data name="ExpenseLabelActionPrevious" xml:space="preserve">
+    <value>Previous</value>
+    <comment>Label for previous action</comment>
+  </data>
+  <data name="ExpenseMessageBoxTitleWarning" xml:space="preserve">
+    <value>Warning</value>
+    <comment>Label for MessageBox warning</comment>
+  </data>
+  <data name="ExpenseMessageRemoveSuccess" xml:space="preserve">
+    <value>Expense removed succesfuly.</value>
+    <comment>Message for removing an expense</comment>
   </data>
 </root>

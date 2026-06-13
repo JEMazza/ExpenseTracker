@@ -101,7 +101,7 @@ namespace ExpenseTracker.Forms {
                 else {
                     await _service.AddExpense(request);
                     refresh = true;
-                    var more = MessageBox.Show(Resources.MessagesResource.ExpenseMessageAddAddSucess, Resources.MessagesResource.ExpenseMessageBoxTitleSuccess, MessageBoxButtons.YesNo,MessageBoxIcon.Information);
+                    var more = MessageBox.Show(Resources.MessagesResource.ExpenseMessageAddSuccess, Resources.MessagesResource.ExpenseMessageBoxTitleSuccess, MessageBoxButtons.YesNo,MessageBoxIcon.Information);
                     if (more == DialogResult.Yes) {
                         await PrepareForm();
                     }

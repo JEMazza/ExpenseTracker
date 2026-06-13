@@ -22,7 +22,7 @@ namespace ExpenseTracker.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class MessagesResource {
+    public class MessagesResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace ExpenseTracker.Resources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ExpenseTracker.Resources.MessagesResource", typeof(MessagesResource).Assembly);
@@ -51,7 +51,7 @@ namespace ExpenseTracker.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,18 +61,27 @@ namespace ExpenseTracker.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The date &quot;From&quot; can&apos;t be higher than the date &quot;To&quot;.
+        ///   Looks up a localized string similar to Select where the expense file will be saved on.
         /// </summary>
-        internal static string ExpenseErrorMessageFilter {
+        public static string ExpenseExportFileDialogTitle {
             get {
-                return ResourceManager.GetString("ExpenseErrorMessageFilter", resourceCulture);
+                return ResourceManager.GetString("ExpenseExportFileDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List of expenses.
+        /// </summary>
+        public static string ExpenseFormTitleListExpenses {
+            get {
+                return ResourceManager.GetString("ExpenseFormTitleListExpenses", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Main menu.
         /// </summary>
-        internal static string ExpenseFormTitleMainMenu {
+        public static string ExpenseFormTitleMainMenu {
             get {
                 return ResourceManager.GetString("ExpenseFormTitleMainMenu", resourceCulture);
             }
@@ -81,7 +90,7 @@ namespace ExpenseTracker.Resources {
         /// <summary>
         ///   Looks up a localized string similar to New Expense.
         /// </summary>
-        internal static string ExpenseFormTitleNew {
+        public static string ExpenseFormTitleNew {
             get {
                 return ResourceManager.GetString("ExpenseFormTitleNew", resourceCulture);
             }
@@ -90,7 +99,7 @@ namespace ExpenseTracker.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Update Expense.
         /// </summary>
-        internal static string ExpenseFormTitleUpdate {
+        public static string ExpenseFormTitleUpdate {
             get {
                 return ResourceManager.GetString("ExpenseFormTitleUpdate", resourceCulture);
             }
@@ -99,7 +108,7 @@ namespace ExpenseTracker.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Filter.
         /// </summary>
-        internal static string ExpenseGroupBoxFilterTitle {
+        public static string ExpenseGroupBoxFilterTitle {
             get {
                 return ResourceManager.GetString("ExpenseGroupBoxFilterTitle", resourceCulture);
             }
@@ -108,7 +117,7 @@ namespace ExpenseTracker.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Expenses.
         /// </summary>
-        internal static string ExpenseLabel {
+        public static string ExpenseLabel {
             get {
                 return ResourceManager.GetString("ExpenseLabel", resourceCulture);
             }
@@ -117,7 +126,7 @@ namespace ExpenseTracker.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
-        internal static string ExpenseLabelActionAdd {
+        public static string ExpenseLabelActionAdd {
             get {
                 return ResourceManager.GetString("ExpenseLabelActionAdd", resourceCulture);
             }
@@ -126,25 +135,34 @@ namespace ExpenseTracker.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Return.
         /// </summary>
-        internal static string ExpenseLabelActionBack {
+        public static string ExpenseLabelActionBack {
             get {
                 return ResourceManager.GetString("ExpenseLabelActionBack", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete.
+        ///   Looks up a localized string similar to Remove.
         /// </summary>
-        internal static string ExpenseLabelActionDelete {
+        public static string ExpenseLabelActionDelete {
             get {
                 return ResourceManager.GetString("ExpenseLabelActionDelete", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export.
+        /// </summary>
+        public static string ExpenseLabelActionExport {
+            get {
+                return ResourceManager.GetString("ExpenseLabelActionExport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search.
         /// </summary>
-        internal static string ExpenseLabelActionFilter {
+        public static string ExpenseLabelActionFilter {
             get {
                 return ResourceManager.GetString("ExpenseLabelActionFilter", resourceCulture);
             }
@@ -153,16 +171,34 @@ namespace ExpenseTracker.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Modify.
         /// </summary>
-        internal static string ExpenseLabelActionModify {
+        public static string ExpenseLabelActionModify {
             get {
                 return ResourceManager.GetString("ExpenseLabelActionModify", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Next.
+        /// </summary>
+        public static string ExpenseLabelActionNext {
+            get {
+                return ResourceManager.GetString("ExpenseLabelActionNext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Previous.
+        /// </summary>
+        public static string ExpenseLabelActionPrevious {
+            get {
+                return ResourceManager.GetString("ExpenseLabelActionPrevious", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cost.
         /// </summary>
-        internal static string ExpenseLabelCost {
+        public static string ExpenseLabelCost {
             get {
                 return ResourceManager.GetString("ExpenseLabelCost", resourceCulture);
             }
@@ -171,16 +207,25 @@ namespace ExpenseTracker.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Date.
         /// </summary>
-        internal static string ExpenseLabelDate {
+        public static string ExpenseLabelDate {
             get {
                 return ResourceManager.GetString("ExpenseLabelDate", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expenses.
+        /// </summary>
+        public static string ExpenseLabelExpenses {
+            get {
+                return ResourceManager.GetString("ExpenseLabelExpenses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to From.
         /// </summary>
-        internal static string ExpenseLabelInputFrom {
+        public static string ExpenseLabelInputFrom {
             get {
                 return ResourceManager.GetString("ExpenseLabelInputFrom", resourceCulture);
             }
@@ -189,7 +234,7 @@ namespace ExpenseTracker.Resources {
         /// <summary>
         ///   Looks up a localized string similar to To.
         /// </summary>
-        internal static string ExpenseLabelInputTo {
+        public static string ExpenseLabelInputTo {
             get {
                 return ResourceManager.GetString("ExpenseLabelInputTo", resourceCulture);
             }
@@ -198,7 +243,7 @@ namespace ExpenseTracker.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
-        internal static string ExpenseLabelName {
+        public static string ExpenseLabelName {
             get {
                 return ResourceManager.GetString("ExpenseLabelName", resourceCulture);
             }
@@ -207,7 +252,7 @@ namespace ExpenseTracker.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Page {0} of {1}.
         /// </summary>
-        internal static string ExpenseLabelPages {
+        public static string ExpenseLabelPages {
             get {
                 return ResourceManager.GetString("ExpenseLabelPages", resourceCulture);
             }
@@ -216,34 +261,70 @@ namespace ExpenseTracker.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Place.
         /// </summary>
-        internal static string ExpenseLabelPlace {
+        public static string ExpenseLabelPlace {
             get {
                 return ResourceManager.GetString("ExpenseLabelPlace", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Place with most expenses.
+        /// </summary>
+        public static string ExpenseLabelPlaceWithMostExpenses {
+            get {
+                return ResourceManager.GetString("ExpenseLabelPlaceWithMostExpenses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Summary.
+        /// </summary>
+        public static string ExpenseLabelSummary {
+            get {
+                return ResourceManager.GetString("ExpenseLabelSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Action.
         /// </summary>
-        internal static string ExpenseLabelTableAction {
+        public static string ExpenseLabelTableAction {
             get {
                 return ResourceManager.GetString("ExpenseLabelTableAction", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total.
+        /// </summary>
+        public static string ExpenseLabelTotal {
+            get {
+                return ResourceManager.GetString("ExpenseLabelTotal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type.
         /// </summary>
-        internal static string ExpenseLabelType {
+        public static string ExpenseLabelType {
             get {
                 return ResourceManager.GetString("ExpenseLabelType", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Type with most expenses.
+        /// </summary>
+        public static string ExpenseLabelTypeWithMostExpenses {
+            get {
+                return ResourceManager.GetString("ExpenseLabelTypeWithMostExpenses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
-        internal static string ExpenseMenuLabelClose {
+        public static string ExpenseMenuLabelClose {
             get {
                 return ResourceManager.GetString("ExpenseMenuLabelClose", resourceCulture);
             }
@@ -252,7 +333,7 @@ namespace ExpenseTracker.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
-        internal static string ExpenseMenuLabelExpenseAdd {
+        public static string ExpenseMenuLabelExpenseAdd {
             get {
                 return ResourceManager.GetString("ExpenseMenuLabelExpenseAdd", resourceCulture);
             }
@@ -261,7 +342,7 @@ namespace ExpenseTracker.Resources {
         /// <summary>
         ///   Looks up a localized string similar to List.
         /// </summary>
-        internal static string ExpenseMenuLabelExpenseList {
+        public static string ExpenseMenuLabelExpenseList {
             get {
                 return ResourceManager.GetString("ExpenseMenuLabelExpenseList", resourceCulture);
             }
@@ -270,7 +351,7 @@ namespace ExpenseTracker.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Expenses.
         /// </summary>
-        internal static string ExpenseMenuLabelExpenses {
+        public static string ExpenseMenuLabelExpenses {
             get {
                 return ResourceManager.GetString("ExpenseMenuLabelExpenses", resourceCulture);
             }
@@ -279,7 +360,7 @@ namespace ExpenseTracker.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Report.
         /// </summary>
-        internal static string ExpenseMenuLabelReports {
+        public static string ExpenseMenuLabelReports {
             get {
                 return ResourceManager.GetString("ExpenseMenuLabelReports", resourceCulture);
             }
@@ -289,16 +370,16 @@ namespace ExpenseTracker.Resources {
         ///   Looks up a localized string similar to Expense added succesfully.
         ///Do you wish do add another one?.
         /// </summary>
-        internal static string ExpenseMessageAddAddSucess {
+        public static string ExpenseMessageAddSuccess {
             get {
-                return ResourceManager.GetString("ExpenseMessageAddAddSucess", resourceCulture);
+                return ResourceManager.GetString("ExpenseMessageAddSuccess", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
-        internal static string ExpenseMessageBoxTitleError {
+        public static string ExpenseMessageBoxTitleError {
             get {
                 return ResourceManager.GetString("ExpenseMessageBoxTitleError", resourceCulture);
             }
@@ -307,17 +388,26 @@ namespace ExpenseTracker.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Success.
         /// </summary>
-        internal static string ExpenseMessageBoxTitleSuccess {
+        public static string ExpenseMessageBoxTitleSuccess {
             get {
                 return ResourceManager.GetString("ExpenseMessageBoxTitleSuccess", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to delete this expense? 
+        ///   Looks up a localized string similar to Warning.
+        /// </summary>
+        public static string ExpenseMessageBoxTitleWarning {
+            get {
+                return ResourceManager.GetString("ExpenseMessageBoxTitleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove this expense? 
         ///This action cannot be reversed..
         /// </summary>
-        internal static string ExpenseMessageDeleteWarning {
+        public static string ExpenseMessageDeleteWarning {
             get {
                 return ResourceManager.GetString("ExpenseMessageDeleteWarning", resourceCulture);
             }
@@ -326,7 +416,7 @@ namespace ExpenseTracker.Resources {
         /// <summary>
         ///   Looks up a localized string similar to There has been an error..
         /// </summary>
-        internal static string ExpenseMessageException {
+        public static string ExpenseMessageException {
             get {
                 return ResourceManager.GetString("ExpenseMessageException", resourceCulture);
             }
@@ -335,16 +425,34 @@ namespace ExpenseTracker.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The expense searched does not exist..
         /// </summary>
-        internal static string ExpenseMessageExpenseNotFound {
+        public static string ExpenseMessageExpenseNotFound {
             get {
                 return ResourceManager.GetString("ExpenseMessageExpenseNotFound", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expenses exported succesfully..
+        /// </summary>
+        public static string ExpenseMessageExportSuccess {
+            get {
+                return ResourceManager.GetString("ExpenseMessageExportSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expense removed succesfuly..
+        /// </summary>
+        public static string ExpenseMessageRemoveSuccess {
+            get {
+                return ResourceManager.GetString("ExpenseMessageRemoveSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expense modified succesfully..
         /// </summary>
-        internal static string ExpenseMessageUpdateSucess {
+        public static string ExpenseMessageUpdateSucess {
             get {
                 return ResourceManager.GetString("ExpenseMessageUpdateSucess", resourceCulture);
             }

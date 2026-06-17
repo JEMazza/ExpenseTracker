@@ -26,10 +26,6 @@ namespace ExpenseServices.Data {
         /// </summary>
         public ExpensePlaceRepository ExpensePlace => _expensePlaces ??= new ExpensePlaceRepository(_context);
 
-        /// <summary>
-        /// Calls SaveChanges()
-        /// </summary>
-        /// <returns></returns>
         public async Task Save() {
             await _context.SaveChangesAsync();
         }

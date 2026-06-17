@@ -44,12 +44,12 @@ namespace ExpenseServices.Data {
         }
 
         /// <summary>
-        /// Returns the 
+        /// Returns the group types for the report form
         /// </summary>
-        /// <param name="from"></param>
-        /// <param name="to"></param>
-        /// <returns></returns>
-        public async Task<List<ExpenseTypeGroupDto>> GetTypesGroup(DateTime? from, DateTime? to) {
+        /// <param name="from">The starting date to filter expenses</param>
+        /// <param name="to">The end date to filter expenses</param>
+        /// <returns>A collection of ExpenseTypeGroupDto</returns>
+        public async Task<IEnumerable<ExpenseTypeGroupDto>> GetTypesGroup(DateTime? from, DateTime? to) {
             bool filter = from.HasValue || to.HasValue;
             bool doubleFilter = from.HasValue && to.HasValue;
             var parameters = new List<object>();

@@ -251,10 +251,6 @@ Do you wish do add another one?</value>
     <value>Export</value>
     <comment>Label for export action</comment>
   </data>
-  <data name="ExpenseExportFileDialogTitle" xml:space="preserve">
-    <value>Select where the expense file will be saved on</value>
-    <comment>Dialog title for the export action</comment>
-  </data>
   <data name="ExpenseLabelPlaceWithMostExpenses" xml:space="preserve">
     <value>Place with most expenses</value>
     <comment>Label for place with most expenses</comment>
@@ -314,5 +310,13 @@ Do you wish do add another one?</value>
   <data name="ExpenseFileNameExpenses" xml:space="preserve">
     <value>Expenses_{0}</value>
     <comment>Filename for the expenses file</comment>
+  </data>
+  <data name="ExpenseExportFileDialogTitle" xml:space="preserve">
+    <value>Select where the expense file will be saved on</value>
+    <comment>Dialog title for the export action</comment>
+  </data>
+  <data name="ExpenseFormTitleSettings" xml:space="preserve">
+    <value>Settings </value>
+    <comment>Settings form title</comment>
   </data>
 </root>

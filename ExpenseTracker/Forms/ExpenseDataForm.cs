@@ -1,6 +1,7 @@
 ﻿using ExpenseServices.DTOs;
 using ExpenseServices.Requests;
 using ExpenseServices.Services;
+using Microsoft.Extensions.Logging;
 
 namespace ExpenseTracker.Forms {
     public partial class ExpenseDataForm : Form {
@@ -8,13 +9,15 @@ namespace ExpenseTracker.Forms {
         private readonly ExpenseService _service;
         private readonly ExpenseTypeService _typeService;
         private readonly ExpensePlaceService _placeService;
+        private readonly ILogger<ExpenseDataForm> _logger;
         public bool refresh = false;
         private int _id = -1;
 
-        public ExpenseDataForm(ExpenseService service,ExpenseTypeService typeService, ExpensePlaceService placeService) {
+        public ExpenseDataForm(ExpenseService service,ExpenseTypeService typeService, ExpensePlaceService placeService, ILogger<ExpenseDataForm> logger) {
             _service = service;
             _typeService = typeService;
             _placeService = placeService;
+            _logger = logger;
             InitializeComponent();
         }
 
@@ -111,9 +114,10 @@ namespace ExpenseTracker.Forms {
                 }
             }
             catch(Exception ex) {
+                string msg = "Error when " + (_id!=-1?"updating":"adding") + " an expense";
+                _logger.LogError(ex, msg);
                 MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally {
+            }finally {
                 btnAction.Enabled = true;
                 btnBack.Enabled = true;
 

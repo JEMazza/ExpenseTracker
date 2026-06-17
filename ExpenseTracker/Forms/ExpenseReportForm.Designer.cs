@@ -31,7 +31,7 @@
             chkFrom = new CheckBox();
             reportTab = new TabControl();
             expTab = new TabPage();
-            expenseTop10Plot = new ScottPlot.WinForms.FormsPlot();
+            expenseTop5Plot = new ScottPlot.WinForms.FormsPlot();
             lblExpPage = new Label();
             btnExpPrevious = new Button();
             btnExpNext = new Button();
@@ -137,7 +137,7 @@
             // 
             // expTab
             // 
-            expTab.Controls.Add(expenseTop10Plot);
+            expTab.Controls.Add(expenseTop5Plot);
             expTab.Controls.Add(lblExpPage);
             expTab.Controls.Add(btnExpPrevious);
             expTab.Controls.Add(btnExpNext);
@@ -152,10 +152,10 @@
             // 
             // expenseTop10Plot
             // 
-            expenseTop10Plot.Location = new Point(771, 6);
-            expenseTop10Plot.Name = "expenseTop10Plot";
-            expenseTop10Plot.Size = new Size(325, 452);
-            expenseTop10Plot.TabIndex = 4;
+            expenseTop5Plot.Location = new Point(771, 6);
+            expenseTop5Plot.Name = "expenseTop10Plot";
+            expenseTop5Plot.Size = new Size(325, 452);
+            expenseTop5Plot.TabIndex = 4;
             // 
             // lblExpPage
             // 
@@ -327,7 +327,7 @@
         private DataGridView dgvPlaces;
         private DataGridView dgvTypes;
         private ScottPlot.WinForms.FormsPlot placeGroupPlot;
-        private ScottPlot.WinForms.FormsPlot expenseTop10Plot;
+        private ScottPlot.WinForms.FormsPlot expenseTop5Plot;
         private ScottPlot.WinForms.FormsPlot typeGroupPlot;
         private Button btnExport;
     }

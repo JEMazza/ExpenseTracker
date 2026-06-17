@@ -4,6 +4,9 @@ using ExpenseTracker.DisplayItems;
 using ScottPlot;
 using System.ComponentModel;
 using System.Data;
+using Microsoft.Extensions.Logging;
+using ScottPlot.Plottables;
+
 
 namespace ExpenseTracker.Forms {
     public partial class ExpenseReportForm : Form {
@@ -12,17 +15,19 @@ namespace ExpenseTracker.Forms {
         private readonly ExpensePlaceService _placeServ;
         private readonly ExpenseTypeService _typeServ;
         private readonly ReportService _reportService;
+        private readonly ILogger<ExpenseReportForm> _logger;
 
         private int _page = 1;
         private int _total = 1;
         private int _totalPages = 1;
         private ExpenseSearchRequest _filter;
 
-        public ExpenseReportForm(ExpenseService expServ, ExpensePlaceService placeServ, ExpenseTypeService typeServ, ReportService reportService) {
+        public ExpenseReportForm(ExpenseService expServ, ExpensePlaceService placeServ, ExpenseTypeService typeServ, ReportService reportService, ILogger<ExpenseReportForm> logger) {
             _expServ = expServ;
             _placeServ = placeServ;
             _typeServ = typeServ;
             _reportService = reportService;
+            _logger = logger;
             InitializeComponent();
         }
 
@@ -114,7 +119,7 @@ namespace ExpenseTracker.Forms {
             try {
                 placeGroupPlot.Plot.Clear();
                 typeGroupPlot.Plot.Clear();
-                expenseTop10Plot.Plot.Clear();
+                expenseTop5Plot.Plot.Clear();
                 _page = 1;
                 _totalPages = 1;
                 btnSearch.Enabled = false;
@@ -129,7 +134,7 @@ namespace ExpenseTracker.Forms {
                 var exp = await _expServ.GetExpenses(request, _page, 25);
                 var types = await _typeServ.GetTypesSummary(request.From, request.To);
                 var places = await _placeServ.GetPlaceSummary(request.From, request.To);
-                var expChart = (await _expServ.GetTop5Expenses(request)).Reverse();
+                var expChart = (await _expServ.GetTop5Expenses(request));
                 _totalPages = decimal.ToInt32(Math.Ceiling((decimal)_total / 25));
                 dgvExpenses.DataSource = new BindingList<ExpenseDetailViewModel>(exp.Select(e => new ExpenseDetailViewModel {
                     Id = e.Id,
@@ -177,12 +182,12 @@ namespace ExpenseTracker.Forms {
                 i = 1;
                 var expData = new List<Bar>();
                 foreach (var expD in expChart) {
-                    expData.Add(new Bar {
+                    BarPlot barplot = expenseTop5Plot.Plot.Add.Bar(new Bar {
                         Value = expD.Total,
-                        FillColor = ScottPlot.Colors.Blue,
-                        Label = expD.Date,
+                        FillColor = palette.GetColor(i),
                         Position = i
                     });
+                    barplot.LegendText = expD.Date;
                     i += 2;
                 }
                 placeGroupPlot.Plot.Add.Pie(placeData);
@@ -195,15 +200,15 @@ namespace ExpenseTracker.Forms {
                 typeGroupPlot.Plot.Legend.Orientation = ScottPlot.Orientation.Horizontal;
                 typeGroupPlot.Refresh();
                 typeGroupPlot.Enabled = false;
-                var barPlot = expenseTop10Plot.Plot.Add.Bars(expData.ToArray());
-                barPlot.Horizontal = true;
+                var barPlot = expenseTop5Plot.Plot.Add.Bars(expData.ToArray());                               
                 if (expChart.Any()) {
-                    expenseTop10Plot.Plot.Axes.SetLimitsX(0, expChart.Max(ec => ec.Total) + 450);
-                    expenseTop10Plot.Plot.Axes.SetLimitsY(0, i - 1);
+                    expenseTop5Plot.Plot.Axes.SetLimitsX(0, i+7);
+                    expenseTop5Plot.Plot.Axes.SetLimitsY(0, expChart.Max(ec => ec.Total) + 450);
+                    expenseTop5Plot.Plot.ShowLegend(Alignment.LowerRight);
                 }
-                expenseTop10Plot.Refresh();
-                expenseTop10Plot.Plot.HideGrid();
-                expenseTop10Plot.Enabled = false;
+                expenseTop5Plot.Refresh();
+                expenseTop5Plot.Plot.HideGrid();
+                expenseTop5Plot.Enabled = false;
                 reportTab.Visible = true;                
                 UpdateExpViews();
                 PrepareExpColumns();
@@ -215,6 +220,7 @@ namespace ExpenseTracker.Forms {
                 this.Refresh();
             }
             catch (Exception ex) {
+                _logger.LogError(ex, "Error when generating the expense report");
                 MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally {
@@ -268,6 +274,7 @@ namespace ExpenseTracker.Forms {
                 btnExpNext.Enabled = true;
             }
             catch (Exception ex) {
+                _logger.LogError(ex, "Error when generating obtaning expenses in report");
                 _page++;
                 MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -312,6 +319,7 @@ namespace ExpenseTracker.Forms {
 
             }
             catch (Exception ex) {
+                _logger.LogError(ex, "Error when exporting the expenses report");
                 MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally {

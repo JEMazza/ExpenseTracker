@@ -3,6 +3,7 @@ using ExpenseServices.Requests;
 using ExpenseServices.Services;
 using ExpenseTracker.DisplayItems;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System.ComponentModel;
 using System.Data;
 
@@ -12,6 +13,7 @@ namespace ExpenseTracker.Forms {
         private readonly ExpenseService _service;
         private readonly ExpensePlaceService _placeService;
         private readonly ExpenseTypeService _typeService;
+        private readonly ILogger<ExpenseListForm> _logger;
         private bool _searched = false;
         private int _page = 1;
         private int _pages = 1;
@@ -21,10 +23,11 @@ namespace ExpenseTracker.Forms {
         private int sortIndex = -1;
         private bool _asc = true;
 
-        public ExpenseListForm(ExpenseService service, ExpensePlaceService placeService, ExpenseTypeService typeService) {
+        public ExpenseListForm(ExpenseService service, ExpensePlaceService placeService, ExpenseTypeService typeService, ILogger<ExpenseListForm> logger) {
             _service = service;
             _placeService = placeService;
             _typeService = typeService;
+            _logger = logger;
             InitializeComponent();
         }
 
@@ -193,6 +196,7 @@ namespace ExpenseTracker.Forms {
 
             }
             catch (Exception ex) {
+                _logger.LogError(ex, "Error when searching expenses");
                 MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally {
@@ -236,6 +240,7 @@ namespace ExpenseTracker.Forms {
                 UpdatePages();
             }
             catch (Exception ex) {
+                _logger.LogError(ex, "Error when fetching expenses");
                 MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally {
@@ -257,6 +262,7 @@ namespace ExpenseTracker.Forms {
                 UpdatePages();
             }
             catch (Exception ex) {
+                _logger.LogError(ex, "Error when searching expenses");
                 MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally {
@@ -337,6 +343,7 @@ namespace ExpenseTracker.Forms {
                             }
                         }
                         catch (Exception ex) {
+                            _logger.LogError(ex, "Error when removing an expense");
                             MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         finally {
@@ -363,8 +370,7 @@ namespace ExpenseTracker.Forms {
                 btnPrevious.Enabled = false;
                 reenablePrevious = true;
             }
-            try {
-                
+            try {                
                 string fileName = String.Format(Resources.MessagesResource.ExpenseFileNameExpenses, DateTime.Now.ToString("yyyyMMdd-HHmmss"));
                 SaveFileDialog saveDialog = new SaveFileDialog();
                 saveDialog.Filter = "*.xls | *.xlsx";
@@ -383,6 +389,7 @@ namespace ExpenseTracker.Forms {
                 }
             }
             catch (Exception ex) {
+                _logger.LogError(ex, "Error when exporting the list of expenses");
                 MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally {

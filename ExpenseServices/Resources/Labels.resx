@@ -117,156 +117,56 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ExpenseLabelName" xml:space="preserve">
+    <value>Name</value>
+    <comment>Expense name label</comment>
+  </data>
   <data name="ExpenseLabelDate" xml:space="preserve">
-    <value>Fecha</value>
+    <value>Date</value>
+    <comment>Date label </comment>
   </data>
   <data name="ExpenseLabelCost" xml:space="preserve">
-    <value>Costo</value>
-  </data>
-  <data name="ExpenseLabelActionDelete" xml:space="preserve">
-    <value>Borrar</value>
-  </data>
-  <data name="ExpenseMessageDeleteWarning" xml:space="preserve">
-    <value>¿Esta seguro que desea eliminar este gasto?
-Esta acción no puede deshacerse.</value>
-  </data>
-  <data name="ExpenseGroupBoxFilterTitle" xml:space="preserve">
-    <value>Buscar</value>
-  </data>
-  <data name="ExpenseLabelInputFrom" xml:space="preserve">
-    <value>Desde</value>
+    <value>Cost</value>
+    <comment>Cost label </comment>
   </data>
   <data name="ExpenseLabel" xml:space="preserve">
-    <value>Gastos</value>
-  </data>
-  <data name="ExpenseLabelActionModify" xml:space="preserve">
-    <value>Modificar</value>
-  </data>
-  <data name="ExpenseLabelName" xml:space="preserve">
-    <value>Nombre</value>
-  </data>
-  <data name="ExpenseFormTitleNew" xml:space="preserve">
-    <value>Nuevo gasto</value>
+    <value>Expenses</value>
+    <comment>Expense label </comment>
   </data>
   <data name="ExpenseLabelPlace" xml:space="preserve">
-    <value>Lugar</value>
-  </data>
-  <data name="ExpenseLabelTableAction" xml:space="preserve">
-    <value>Acción</value>
-  </data>
-  <data name="ExpenseLabelInputTo" xml:space="preserve">
-    <value>Hasta</value>
+    <value>Place</value>
+    <comment>Expense place label</comment>
   </data>
   <data name="ExpenseLabelType" xml:space="preserve">
-    <value>Tipo</value>
+    <value>Type</value>
+    <comment>Expense type label</comment>
   </data>
-  <data name="ExpenseFormTitleUpdate" xml:space="preserve">
-    <value>Actualizar gasto</value>
+  <data name="ExpenseLabelPlaces" xml:space="preserve">
+    <value>Places</value>
+    <comment>Places label</comment>
   </data>
-  <data name="ExpenseLabelPages" xml:space="preserve">
-    <value>Página {0} of {1}</value>
-  </data>
-  <data name="ExpenseLabelActionFilter" xml:space="preserve">
-    <value>Buscar</value>
-  </data>
-  <data name="ExpenseMessageAddSuccess" xml:space="preserve">
-    <value>Gasto agregado con éxito.
-¿Desea agregar otro?</value>
-  </data>
-  <data name="ExpenseMessageUpdateSucess" xml:space="preserve">
-    <value>Gasto actualizado exitosamente.</value>
-  </data>
-  <data name="ExpenseLabelActionAdd" xml:space="preserve">
-    <value>Agregar</value>
-  </data>
-  <data name="ExpenseLabelActionBack" xml:space="preserve">
-    <value>Volver</value>
-  </data>
-  <data name="ExpenseMessageBoxTitleError" xml:space="preserve">
-    <value>Error</value>
-  </data>
-  <data name="ExpenseMessageBoxTitleSuccess" xml:space="preserve">
-    <value>Éxito</value>
-  </data>
-  <data name="ExpenseMessageExpenseNotFound" xml:space="preserve">
-    <value>El gasto buscado no existe.</value>
-  </data>
-  <data name="ExpenseMessageException" xml:space="preserve">
-    <value>Ha ocurrido un error.</value>
-  </data>
-  <data name="ExpenseMenuLabelExpenses" xml:space="preserve">
-    <value>Gastos</value>
-  </data>
-  <data name="ExpenseMenuLabelExpenseAdd" xml:space="preserve">
-    <value>Agregar</value>
-  </data>
-  <data name="ExpenseMenuLabelExpenseList" xml:space="preserve">
-    <value>Lista</value>
-  </data>
-  <data name="ExpenseMenuLabelReports" xml:space="preserve">
-    <value>Reportes</value>
-  </data>
-  <data name="ExpenseMenuLabelClose" xml:space="preserve">
-    <value>Cerrar</value>
-  </data>
-  <data name="ExpenseFormTitleMainMenu" xml:space="preserve">
-    <value>Menú principal</value>
-  </data>
-  <data name="ExpenseFormTitleListExpenses" xml:space="preserve">
-    <value>Lista de gastos</value>
-  </data>
-  <data name="ExpenseLabelActionExport" xml:space="preserve">
-    <value>Exportar</value>
-  </data>
-  <data name="ExpenseLabelPlaceWithMostExpenses" xml:space="preserve">
-    <value>Lugar con mas gastos</value>
-  </data>
-  <data name="ExpenseLabelTypeWithMostExpenses" xml:space="preserve">
-    <value>Tipo con mas gastos</value>
-  </data>
-  <data name="ExpenseLabelSummary" xml:space="preserve">
-    <value>Resumen</value>
-  </data>
-  <data name="ExpenseMessageExportSuccess" xml:space="preserve">
-    <value>Gastos exportados correctamente.</value>
+  <data name="ExpenseLabelTypes" xml:space="preserve">
+    <value>Types</value>
+    <comment>Types label</comment>
   </data>
   <data name="ExpenseLabelTotal" xml:space="preserve">
     <value>Total</value>
-  </data>
-  <data name="ExpenseLabelExpenses" xml:space="preserve">
-    <value>Gastos</value>
-  </data>
-  <data name="ExpenseLabelActionNext" xml:space="preserve">
-    <value>Siguiente</value>
-  </data>
-  <data name="ExpenseLabelActionPrevious" xml:space="preserve">
-    <value>Anterior</value>
-  </data>
-  <data name="ExpenseMessageBoxTitleWarning" xml:space="preserve">
-    <value>Aviso</value>
-  </data>
-  <data name="ExpenseMessageRemoveSuccess" xml:space="preserve">
-    <value>Gasto eliminado exitosamente.</value>
+    <comment>Label for total</comment>
   </data>
   <data name="ExpenseLabelCount" xml:space="preserve">
-    <value>Cantidad</value>
+    <value>Count</value>
+    <comment>Count label </comment>
   </data>
-  <data name="ExpenseFormTitleReport" xml:space="preserve">
-    <value>Reporte de gastos</value>
+  <data name="ExpenseLabelPlaceWithMostExpenses" xml:space="preserve">
+    <value>Place with most expenses</value>
+    <comment>Label for place with most expenses</comment>
   </data>
-  <data name="ExpenseFileNameReport" xml:space="preserve">
-    <value>ReporteGastos_{0}</value>
+  <data name="ExpenseLabelTypeWithMostExpenses" xml:space="preserve">
+    <value>Type with most expenses</value>
+    <comment>Label for type with most expenses</comment>
   </data>
-  <data name="ExpenseMessageReportExportSuccess" xml:space="preserve">
-    <value>Reporte exportado exitosamente.</value>
-  </data>
-  <data name="ExpenseFileNameExpenses" xml:space="preserve">
-    <value>Gastos_{0}</value>
-  </data>
-  <data name="ExpenseExportFileDialogTitle" xml:space="preserve">
-    <value>Seleccione el lugar para exportar el archivo de gastos</value>
-  </data>
-  <data name="ExpenseFormTitleSettings" xml:space="preserve">
-    <value>Configuración</value>
+  <data name="ExpenseLabelSummary" xml:space="preserve">
+    <value>Summary</value>
+    <comment>Label for summary</comment>
   </data>
 </root>

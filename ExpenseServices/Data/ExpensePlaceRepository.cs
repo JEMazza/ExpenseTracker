@@ -40,12 +40,12 @@ namespace ExpenseServices.Data {
         }
 
         /// <summary>
-        /// 
+        /// Returns a collection of places alonside the total and appearances in them.
         /// </summary>
-        /// <param name="from"></param>
-        /// <param name="to"></param>
-        /// <returns></returns>
-        public async Task<List<ExpensePlaceGroupDto>> GetPlacesGroup(DateTime? from, DateTime? to) {
+        /// <param name="from">The starting date to filter expenses </param>
+        /// <param name="to">The end date to filter expenses </param>
+        /// <returns>A collection of places alonside the total and appearances in them.</returns>
+        public async Task<IEnumerable<ExpensePlaceGroupDto>> GetPlacesGroup(DateTime? from, DateTime? to) {
             bool filter = from.HasValue || to.HasValue;
             bool doubleFilter = from.HasValue && to.HasValue;
             var parameters = new List<object>();

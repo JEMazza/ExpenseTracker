@@ -124,6 +124,15 @@ namespace ExpenseTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Settings .
+        /// </summary>
+        public static string ExpenseFormTitleSettings {
+            get {
+                return ResourceManager.GetString("ExpenseFormTitleSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update Expense.
         /// </summary>
         public static string ExpenseFormTitleUpdate {

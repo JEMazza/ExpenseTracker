@@ -232,6 +232,15 @@ namespace ExpenseTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string ExpenseLabelActionSave {
+            get {
+                return ResourceManager.GetString("ExpenseLabelActionSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cost.
         /// </summary>
         public static string ExpenseLabelCost {
@@ -286,6 +295,33 @@ namespace ExpenseTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string ExpenseLabelLanguage {
+            get {
+                return ResourceManager.GetString("ExpenseLabelLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to English.
+        /// </summary>
+        public static string ExpenseLabelLanguageEnglish {
+            get {
+                return ResourceManager.GetString("ExpenseLabelLanguageEnglish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spanish.
+        /// </summary>
+        public static string ExpenseLabelLanguageSpanish {
+            get {
+                return ResourceManager.GetString("ExpenseLabelLanguageSpanish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string ExpenseLabelName {
@@ -300,6 +336,15 @@ namespace ExpenseTracker.Resources {
         public static string ExpenseLabelPages {
             get {
                 return ResourceManager.GetString("ExpenseLabelPages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expenses per page.
+        /// </summary>
+        public static string ExpenseLabelPageSize {
+            get {
+                return ResourceManager.GetString("ExpenseLabelPageSize", resourceCulture);
             }
         }
         
@@ -367,6 +412,15 @@ namespace ExpenseTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Version: {0}.
+        /// </summary>
+        public static string ExpenseLabelVersion {
+            get {
+                return ResourceManager.GetString("ExpenseLabelVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
         public static string ExpenseMenuLabelClose {
@@ -408,6 +462,15 @@ namespace ExpenseTracker.Resources {
         public static string ExpenseMenuLabelReports {
             get {
                 return ResourceManager.GetString("ExpenseMenuLabelReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string ExpenseMenuLabelSettings {
+            get {
+                return ResourceManager.GetString("ExpenseMenuLabelSettings", resourceCulture);
             }
         }
         
@@ -486,6 +549,45 @@ namespace ExpenseTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You recently changed the language. 
+        ///It will be applied after you close the program..
+        /// </summary>
+        public static string ExpenseMessageLanguageChanged {
+            get {
+                return ResourceManager.GetString("ExpenseMessageLanguageChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retrieving over 100 expenses per page can lead to performance issues. 
+        ///Are you sure you want to retrieve {0} expenses per page?.
+        /// </summary>
+        public static string ExpenseMessagePageChangeWarningOver100 {
+            get {
+                return ResourceManager.GetString("ExpenseMessagePageChangeWarningOver100", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retrieving 10 or less expenses per page can affect user experience. 
+        ///Are you sure do you want to retrieve {0} expenses per page?.
+        /// </summary>
+        public static string ExpenseMessagePageChangeWarningUnder10 {
+            get {
+                return ResourceManager.GetString("ExpenseMessagePageChangeWarningUnder10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can&apos;t set that pages bring less than 1 expense..
+        /// </summary>
+        public static string ExpenseMessagePageSizeError {
+            get {
+                return ResourceManager.GetString("ExpenseMessagePageSizeError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expense removed succesfuly..
         /// </summary>
         public static string ExpenseMessageRemoveSuccess {
@@ -500,6 +602,15 @@ namespace ExpenseTracker.Resources {
         public static string ExpenseMessageReportExportSuccess {
             get {
                 return ResourceManager.GetString("ExpenseMessageReportExportSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings changed succesfully..
+        /// </summary>
+        public static string ExpenseMessageSettingsChangeSuccess {
+            get {
+                return ResourceManager.GetString("ExpenseMessageSettingsChangeSuccess", resourceCulture);
             }
         }
         

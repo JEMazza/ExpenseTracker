@@ -201,7 +201,7 @@ Do you wish do add another one?</value>
   </data>
   <data name="ExpenseLabelActionBack" xml:space="preserve">
     <value>Return</value>
-    <comment>Label for Back actions.</comment>
+    <comment>Label for back actions.</comment>
   </data>
   <data name="ExpenseMessageBoxTitleError" xml:space="preserve">
     <value>Error</value>
@@ -318,5 +318,56 @@ Do you wish do add another one?</value>
   <data name="ExpenseFormTitleSettings" xml:space="preserve">
     <value>Settings </value>
     <comment>Settings form title</comment>
+  </data>
+  <data name="ExpenseMessagePageChangeWarningOver100" xml:space="preserve">
+    <value>Retrieving over 100 expenses per page can lead to performance issues. 
+Are you sure you want to retrieve {0} expenses per page?</value>
+    <comment>Warning message for page size over 100</comment>
+  </data>
+  <data name="ExpenseMessagePageChangeWarningUnder10" xml:space="preserve">
+    <value>Retrieving 10 or less expenses per page can affect user experience. 
+Are you sure do you want to retrieve {0} expenses per page?</value>
+    <comment>Warning message for page size less or equal to 10</comment>
+  </data>
+  <data name="ExpenseMessageSettingsChangeSuccess" xml:space="preserve">
+    <value>Settings changed succesfully.</value>
+    <comment>Message for succesfully updating the page size changes.</comment>
+  </data>
+  <data name="ExpenseMessageLanguageChanged" xml:space="preserve">
+    <value>You recently changed the language. 
+It will be applied after you close the program.</value>
+    <comment>Message for warning after a language change</comment>
+  </data>
+  <data name="ExpenseMenuLabelSettings" xml:space="preserve">
+    <value>Settings</value>
+    <comment>Menu label for settings in main menu</comment>
+  </data>
+  <data name="ExpenseLabelVersion" xml:space="preserve">
+    <value>Version: {0}</value>
+    <comment>Label for system version</comment>
+  </data>
+  <data name="ExpenseLabelLanguage" xml:space="preserve">
+    <value>Language</value>
+    <comment>Label for language label</comment>
+  </data>
+  <data name="ExpenseLabelPageSize" xml:space="preserve">
+    <value>Expenses per page</value>
+    <comment>Label for the page size</comment>
+  </data>
+  <data name="ExpenseLabelActionSave" xml:space="preserve">
+    <value>Save</value>
+    <comment>Label for save actions</comment>
+  </data>
+  <data name="ExpenseMessagePageSizeError" xml:space="preserve">
+    <value>You can't set that pages bring less than 1 expense.</value>
+    <comment>Error message for setting the Expenses Per Page lower than 1</comment>
+  </data>
+  <data name="ExpenseLabelLanguageSpanish" xml:space="preserve">
+    <value>Spanish</value>
+    <comment>Label for the spanish language</comment>
+  </data>
+  <data name="ExpenseLabelLanguageEnglish" xml:space="preserve">
+    <value>English</value>
+    <comment>Label for the english language</comment>
   </data>
 </root>

@@ -1,10 +1,12 @@
-﻿using ExpenseServices.DTOs;
+﻿using DocumentFormat.OpenXml.Wordprocessing;
+using ExpenseServices.DTOs;
 using ExpenseServices.Requests;
 using ExpenseServices.Services;
 using ExpenseTracker.DisplayItems;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 
 namespace ExpenseTracker.Forms {
@@ -14,10 +16,10 @@ namespace ExpenseTracker.Forms {
         private readonly ExpensePlaceService _placeService;
         private readonly ExpenseTypeService _typeService;
         private readonly ILogger<ExpenseListForm> _logger;
+        private readonly int _size;
         private bool _searched = false;
         private int _page = 1;
         private int _pages = 1;
-        private int _size = 25;
         private ExpenseSearchRequest? _filter = null;
         private int _total = 0;
         private int sortIndex = -1;
@@ -28,6 +30,9 @@ namespace ExpenseTracker.Forms {
             _placeService = placeService;
             _typeService = typeService;
             _logger = logger;
+            if (!int.TryParse(ConfigurationManager.AppSettings["PageSize"], out _size)) {
+                throw new Exception("PAGE SIZE PROPERTY NOT FOUND");
+            }
             InitializeComponent();
         }
 
@@ -119,6 +124,7 @@ namespace ExpenseTracker.Forms {
                 _searched = true;
             }
             if (_filter == null) {
+                _logger.LogWarning("Attempted to filter expenses with a null filter: {0}", _filter);
                 return false;
             }
             var res = await _service.GetExpenses(_filter, _page, _size, order);
@@ -184,7 +190,6 @@ namespace ExpenseTracker.Forms {
                 btnExport.Visible = false;
                 btnExport.Enabled = false;
                 _page = 1;
-                _size = 25;
                 bool loaded = await LoadExpenses();
                 if (!loaded) {
                     return;
@@ -343,7 +348,7 @@ namespace ExpenseTracker.Forms {
                             }
                         }
                         catch (Exception ex) {
-                            _logger.LogError(ex, "Error when removing an expense");
+                            _logger.LogError(ex, "Error when removing an expense. ID={0}",exp.Id);
                             MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         finally {

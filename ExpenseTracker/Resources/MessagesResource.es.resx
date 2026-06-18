@@ -269,4 +269,43 @@ Esta acción no puede deshacerse.</value>
   <data name="ExpenseFormTitleSettings" xml:space="preserve">
     <value>Configuración</value>
   </data>
+  <data name="ExpenseMessagePageChangeWarningOver100" xml:space="preserve">
+    <value>Obtener mas de 100 gastos por página puede afectar el rendimiento. 
+¿Esta seguro que desea obtener {0} gastos por página?</value>
+  </data>
+  <data name="ExpenseMessagePageChangeWarningUnder10" xml:space="preserve">
+    <value>Obtener 10 o menos gastos puede generar problemas de experiencia de usuario. 
+¿Esta seguro que desea obtener {0} gastos por pagina?</value>
+  </data>
+  <data name="ExpenseMessageSettingsChangeSuccess" xml:space="preserve">
+    <value>Configuración cambiada exitosamente.</value>
+  </data>
+  <data name="ExpenseMessageLanguageChanged" xml:space="preserve">
+    <value>Recientemente ha cambiado el idioma. 
+Este será aplicado cuando cierre el programa. </value>
+  </data>
+  <data name="ExpenseMenuLabelSettings" xml:space="preserve">
+    <value>Configuración</value>
+  </data>
+  <data name="ExpenseLabelVersion" xml:space="preserve">
+    <value>Version: {0}</value>
+  </data>
+  <data name="ExpenseLabelLanguage" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="ExpenseLabelPageSize" xml:space="preserve">
+    <value>Gastos por página</value>
+  </data>
+  <data name="ExpenseLabelActionSave" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="ExpenseMessagePageSizeError" xml:space="preserve">
+    <value>No puede definir que las páginas traigan menos de un gasto por pagina.</value>
+  </data>
+  <data name="ExpenseLabelLanguageSpanish" xml:space="preserve">
+    <value>Español</value>
+  </data>
+  <data name="ExpenseLabelLanguageEnglish" xml:space="preserve">
+    <value>Inglés</value>
+  </data>
 </root>

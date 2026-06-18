@@ -58,6 +58,7 @@ namespace ExpenseTracker.Forms {
             if (_id != -1) {
                 ExpenseFormDto? formData = await _service.PrepareExpenseForm(_id);
                 if (formData == null) {
+                    _logger.LogWarning("User attempted to obtained an expense that was deleted. ID={0}", _id);
                     MessageBox.Show(Resources.MessagesResource.ExpenseMessageExpenseNotFound, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.Close();
                     return;
@@ -114,7 +115,7 @@ namespace ExpenseTracker.Forms {
                 }
             }
             catch(Exception ex) {
-                string msg = "Error when " + (_id!=-1?"updating":"adding") + " an expense";
+                string msg = "Error when " + (_id!=-1?"updating":"adding") + " an expense. ";
                 _logger.LogError(ex, msg);
                 MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }finally {

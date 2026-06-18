@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using Microsoft.Extensions.Logging;
 using ScottPlot.Plottables;
-
+using System.Configuration;
 
 namespace ExpenseTracker.Forms {
     public partial class ExpenseReportForm : Form {
@@ -20,6 +20,7 @@ namespace ExpenseTracker.Forms {
         private int _page = 1;
         private int _total = 1;
         private int _totalPages = 1;
+        private readonly int _pageSize;
         private ExpenseSearchRequest _filter;
 
         public ExpenseReportForm(ExpenseService expServ, ExpensePlaceService placeServ, ExpenseTypeService typeServ, ReportService reportService, ILogger<ExpenseReportForm> logger) {
@@ -28,6 +29,9 @@ namespace ExpenseTracker.Forms {
             _typeServ = typeServ;
             _reportService = reportService;
             _logger = logger;
+            if (!int.TryParse(ConfigurationManager.AppSettings["PageSize"], out _pageSize)) {
+                throw new Exception("PAGE SIZE PROPERTY NOT FOUND");
+            }
             InitializeComponent();
         }
 
@@ -131,11 +135,11 @@ namespace ExpenseTracker.Forms {
                 btnExport.Enabled = false;
                 System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
                 _total = await _expServ.GetExpensesCount(request);
-                var exp = await _expServ.GetExpenses(request, _page, 25);
+                var exp = await _expServ.GetExpenses(request, _page, _pageSize);
                 var types = await _typeServ.GetTypesSummary(request.From, request.To);
                 var places = await _placeServ.GetPlaceSummary(request.From, request.To);
                 var expChart = (await _expServ.GetTop5Expenses(request));
-                _totalPages = decimal.ToInt32(Math.Ceiling((decimal)_total / 25));
+                _totalPages = decimal.ToInt32(Math.Ceiling((decimal)_total / _pageSize));
                 dgvExpenses.DataSource = new BindingList<ExpenseDetailViewModel>(exp.Select(e => new ExpenseDetailViewModel {
                     Id = e.Id,
                     Date = e.Date,
@@ -213,8 +217,8 @@ namespace ExpenseTracker.Forms {
                 UpdateExpViews();
                 PrepareExpColumns();
                 PrepareTypeAndPlaceColumns();
-                btnExpNext.Visible = _total > 25;
-                btnExpNext.Enabled = _total > 25;
+                btnExpNext.Visible = _total > _pageSize;
+                btnExpNext.Enabled = _total > _pageSize;
                 btnExport.Visible = true;
                 btnExport.Enabled = true;
                 this.Refresh();
@@ -233,7 +237,7 @@ namespace ExpenseTracker.Forms {
             try {
                 System.Windows.Forms.Cursor.Current = Cursors.WaitCursor;
                 _page++;
-                var exp = await _expServ.GetExpenses(_filter, _page, 25);
+                var exp = await _expServ.GetExpenses(_filter, _page, _pageSize);
                 dgvExpenses.DataSource = new BindingList<ExpenseDetailViewModel>(exp.Select(e => new ExpenseDetailViewModel {
                     Id = e.Id,
                     Date = e.Date,
@@ -252,15 +256,15 @@ namespace ExpenseTracker.Forms {
             }
             finally {
                 System.Windows.Forms.Cursor.Current = Cursors.Default;
-                btnExpNext.Enabled = (_page * 25 < _total);
-                btnExpNext.Visible = (_page * 25 < _total);
+                btnExpNext.Enabled = (_page * _pageSize < _total);
+                btnExpNext.Visible = (_page * _pageSize < _total);
             }
         }
 
         private async void btnExpPrevious_Click(object sender, EventArgs e) {
             try {
                 _page--;
-                var exp = await _expServ.GetExpenses(_filter, _page, 25);
+                var exp = await _expServ.GetExpenses(_filter, _page, _pageSize);
                 dgvExpenses.DataSource = new BindingList<ExpenseDetailViewModel>(exp.Select(e => new ExpenseDetailViewModel {
                     Id = e.Id,
                     Date = e.Date,
@@ -274,7 +278,7 @@ namespace ExpenseTracker.Forms {
                 btnExpNext.Enabled = true;
             }
             catch (Exception ex) {
-                _logger.LogError(ex, "Error when generating obtaning expenses in report");
+                _logger.LogError(ex, "Error when obtaning expenses in report.");
                 _page++;
                 MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

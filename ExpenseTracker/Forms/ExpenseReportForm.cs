@@ -45,7 +45,8 @@ namespace ExpenseTracker.Forms {
             reportTab.TabPages[0].Text = Resources.MessagesResource.ExpenseLabel;
             reportTab.TabPages[1].Text = Resources.MessagesResource.ExpenseLabelPlace;
             reportTab.TabPages[2].Text = Resources.MessagesResource.ExpenseLabelType;
-            this.Text=Resources.MessagesResource.ExpenseFormTitleListExpenses;
+            gBoxSearch.Text = Resources.MessagesResource.ExpenseGroupBoxFilterTitle;
+            this.Text=Resources.MessagesResource.ExpenseFormTitleReport;
         }
 
         private void PrepareExpColumns() {
@@ -207,7 +208,7 @@ namespace ExpenseTracker.Forms {
                 var barPlot = expenseTop5Plot.Plot.Add.Bars(expData.ToArray());                               
                 if (expChart.Any()) {
                     expenseTop5Plot.Plot.Axes.SetLimitsX(0, i+7);
-                    expenseTop5Plot.Plot.Axes.SetLimitsY(0, expChart.Max(ec => ec.Total) + 450);
+                    expenseTop5Plot.Plot.Axes.SetLimitsY(0, expChart.Max(ec => ec.Total) + 150);
                     expenseTop5Plot.Plot.ShowLegend(Alignment.LowerRight);
                 }
                 expenseTop5Plot.Refresh();

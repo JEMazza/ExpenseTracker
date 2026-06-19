@@ -308,4 +308,7 @@ Este será aplicado cuando cierre el programa. </value>
   <data name="ExpenseLabelLanguageEnglish" xml:space="preserve">
     <value>Inglés</value>
   </data>
+  <data name="ExpenseMessageDeleteSuccess" xml:space="preserve">
+    <value>Gasto eliminado correctamente.</value>
+  </data>
 </root>

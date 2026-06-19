@@ -370,4 +370,8 @@ It will be applied after you close the program.</value>
     <value>English</value>
     <comment>Label for the english language</comment>
   </data>
+  <data name="ExpenseMessageDeleteSuccess" xml:space="preserve">
+    <value>Expense deleted successfully.</value>
+    <comment>Message for deleting an expense</comment>
+  </data>
 </root>

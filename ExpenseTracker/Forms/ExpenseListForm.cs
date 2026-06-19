@@ -335,7 +335,7 @@ namespace ExpenseTracker.Forms {
                             btnPrevious.Enabled = false;
                             bool removed = await _service.RemoveExpense(exp.Id);
                             if (removed) {
-                                MessageBox.Show(Resources.MessagesResource.ExpenseMessageBoxTitleWarning, Resources.MessagesResource.ExpenseMessageBoxTitleSuccess, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show(Resources.MessagesResource.ExpenseMessageDeleteSuccess, Resources.MessagesResource.ExpenseMessageBoxTitleSuccess, MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 int oldPages = _pages;
                                 await LoadSummary();
                                 if (_pages < oldPages) {

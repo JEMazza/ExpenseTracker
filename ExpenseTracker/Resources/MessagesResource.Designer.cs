@@ -512,6 +512,15 @@ namespace ExpenseTracker.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expense deleted successfully..
+        /// </summary>
+        public static string ExpenseMessageDeleteSuccess {
+            get {
+                return ResourceManager.GetString("ExpenseMessageDeleteSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove this expense? 
         ///This action cannot be reversed..
         /// </summary>

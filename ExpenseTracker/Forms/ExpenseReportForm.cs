@@ -251,6 +251,7 @@ namespace ExpenseTracker.Forms {
                 UpdateExpViews();
             }
             catch (Exception ex) {
+                _logger.LogError(ex, "Error when obtaning expenses in report.");
                 _page--;
                 MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

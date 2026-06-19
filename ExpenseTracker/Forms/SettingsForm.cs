@@ -40,6 +40,7 @@ namespace ExpenseTracker.Forms {
             lblLanguage.Text = Resources.MessagesResource.ExpenseLabelLanguage;
             lblPageSize.Text = Resources.MessagesResource.ExpenseLabelPageSize;
             btnBack.Text = Resources.MessagesResource.ExpenseLabelActionBack;
+            btnSave.Text = Resources.MessagesResource.ExpenseLabelActionSave;
             numPage.Value = _oldPageValue;
             this.Text = Resources.MessagesResource.ExpenseFormTitleSettings;
             _ready = true;

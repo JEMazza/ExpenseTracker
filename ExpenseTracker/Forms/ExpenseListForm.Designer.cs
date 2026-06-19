@@ -25,8 +25,9 @@
         private void InitializeComponent() {
             components = new System.ComponentModel.Container();
             menuStrip1 = new MenuStrip();
-            agregarToolStripMenuItem = new ToolStripMenuItem();
-            groupBox1 = new GroupBox();
+            addToolStripMenuItem = new ToolStripMenuItem();
+            closeToolStripMenuItem = new ToolStripMenuItem();
+            gBoxFilter = new GroupBox();
             btnSearch = new Button();
             lblPlace = new Label();
             chkListPlace = new CheckedListBox();
@@ -45,14 +46,14 @@
             lblPlaceVal = new Label();
             lblExpensesVal = new Label();
             lblTotalValue = new Label();
-            label3 = new Label();
-            label2 = new Label();
-            label1 = new Label();
+            lblTypeWithMostExpenses = new Label();
+            lblPlaceWithMostExpenses = new Label();
+            lblExpense = new Label();
             lblTotal = new Label();
             dgvExpenses = new DataGridView();
             btnExport = new Button();
             menuStrip1.SuspendLayout();
-            groupBox1.SuspendLayout();
+            gBoxFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)expenseDtoBindingSource).BeginInit();
             gBoxSummary.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvExpenses).BeginInit();
@@ -61,7 +62,7 @@
             // menuStrip1
             // 
             menuStrip1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { agregarToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { addToolStripMenuItem, closeToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(5, 2, 0, 2);
@@ -69,39 +70,46 @@
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
-            // agregarToolStripMenuItem
+            // addToolStripMenuItem
             // 
-            agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
-            agregarToolStripMenuItem.Size = new Size(78, 25);
-            agregarToolStripMenuItem.Text = "Agregar";
-            agregarToolStripMenuItem.Click += agregarToolStripMenuItem_Click;
+            addToolStripMenuItem.Name = "addToolStripMenuItem";
+            addToolStripMenuItem.Size = new Size(78, 25);
+            addToolStripMenuItem.Text = "Agregar";
+            addToolStripMenuItem.Click += agregarToolStripMenuItem_Click;
             // 
-            // groupBox1
+            // closeToolStripMenuItem
             // 
-            groupBox1.Controls.Add(btnSearch);
-            groupBox1.Controls.Add(lblPlace);
-            groupBox1.Controls.Add(chkListPlace);
-            groupBox1.Controls.Add(dtpTo);
-            groupBox1.Controls.Add(dtpFrom);
-            groupBox1.Controls.Add(lblType);
-            groupBox1.Controls.Add(chkListType);
-            groupBox1.Controls.Add(chkTo);
-            groupBox1.Controls.Add(chkFrom);
-            groupBox1.Location = new Point(11, 32);
-            groupBox1.Margin = new Padding(2, 3, 2, 3);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(2, 3, 2, 3);
-            groupBox1.Size = new Size(796, 272);
-            groupBox1.TabIndex = 1;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Busqueda";
+            closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            closeToolStripMenuItem.Size = new Size(66, 25);
+            closeToolStripMenuItem.Text = "Cerrar";
+            closeToolStripMenuItem.Click += closeToolStripMenuItem_Click;
+            // 
+            // gBoxFilter
+            // 
+            gBoxFilter.Controls.Add(btnSearch);
+            gBoxFilter.Controls.Add(lblPlace);
+            gBoxFilter.Controls.Add(chkListPlace);
+            gBoxFilter.Controls.Add(dtpTo);
+            gBoxFilter.Controls.Add(dtpFrom);
+            gBoxFilter.Controls.Add(lblType);
+            gBoxFilter.Controls.Add(chkListType);
+            gBoxFilter.Controls.Add(chkTo);
+            gBoxFilter.Controls.Add(chkFrom);
+            gBoxFilter.Location = new Point(11, 32);
+            gBoxFilter.Margin = new Padding(2, 3, 2, 3);
+            gBoxFilter.Name = "gBoxFilter";
+            gBoxFilter.Padding = new Padding(2, 3, 2, 3);
+            gBoxFilter.Size = new Size(796, 272);
+            gBoxFilter.TabIndex = 3;
+            gBoxFilter.TabStop = false;
+            gBoxFilter.Text = "Busqueda";
             // 
             // btnSearch
             // 
             btnSearch.Location = new Point(702, 20);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(89, 237);
-            btnSearch.TabIndex = 8;
+            btnSearch.TabIndex = 7;
             btnSearch.Text = "Buscar";
             btnSearch.UseVisualStyleBackColor = true;
             btnSearch.Click += btnSearch_Click;
@@ -130,7 +138,7 @@
             dtpTo.Location = new Point(438, 28);
             dtpTo.Name = "dtpTo";
             dtpTo.Size = new Size(129, 29);
-            dtpTo.TabIndex = 5;
+            dtpTo.TabIndex = 4;
             dtpTo.Visible = false;
             // 
             // dtpFrom
@@ -139,7 +147,7 @@
             dtpFrom.Location = new Point(83, 27);
             dtpFrom.Name = "dtpFrom";
             dtpFrom.Size = new Size(122, 29);
-            dtpFrom.TabIndex = 1;
+            dtpFrom.TabIndex = 2;
             dtpFrom.Visible = false;
             // 
             // lblType
@@ -157,7 +165,7 @@
             chkListType.Location = new Point(51, 85);
             chkListType.Name = "chkListType";
             chkListType.Size = new Size(283, 172);
-            chkListType.TabIndex = 2;
+            chkListType.TabIndex = 5;
             // 
             // chkTo
             // 
@@ -225,13 +233,13 @@
             gBoxSummary.Controls.Add(lblPlaceVal);
             gBoxSummary.Controls.Add(lblExpensesVal);
             gBoxSummary.Controls.Add(lblTotalValue);
-            gBoxSummary.Controls.Add(label3);
-            gBoxSummary.Controls.Add(label2);
-            gBoxSummary.Controls.Add(label1);
+            gBoxSummary.Controls.Add(lblTypeWithMostExpenses);
+            gBoxSummary.Controls.Add(lblPlaceWithMostExpenses);
+            gBoxSummary.Controls.Add(lblExpense);
             gBoxSummary.Controls.Add(lblTotal);
             gBoxSummary.Location = new Point(812, 32);
             gBoxSummary.Name = "gBoxSummary";
-            gBoxSummary.Size = new Size(200, 312);
+            gBoxSummary.Size = new Size(200, 318);
             gBoxSummary.TabIndex = 11;
             gBoxSummary.TabStop = false;
             gBoxSummary.Text = "Resumen";
@@ -239,76 +247,81 @@
             // 
             // lblTypeVal
             // 
+            lblTypeVal.AutoEllipsis = true;
             lblTypeVal.AutoSize = true;
-            lblTypeVal.Location = new Point(11, 251);
+            lblTypeVal.Location = new Point(3, 261);
             lblTypeVal.Name = "lblTypeVal";
             lblTypeVal.Size = new Size(19, 21);
             lblTypeVal.TabIndex = 7;
             lblTypeVal.Text = "0";
+            lblTypeVal.TextAlign = ContentAlignment.TopRight;
             // 
             // lblPlaceVal
             // 
             lblPlaceVal.AutoEllipsis = true;
             lblPlaceVal.AutoSize = true;
-            lblPlaceVal.Location = new Point(11, 165);
+            lblPlaceVal.Location = new Point(2, 164);
             lblPlaceVal.Name = "lblPlaceVal";
             lblPlaceVal.Size = new Size(19, 21);
             lblPlaceVal.TabIndex = 6;
             lblPlaceVal.Text = "0";
+            lblPlaceVal.TextAlign = ContentAlignment.TopRight;
             // 
             // lblExpensesVal
             // 
             lblExpensesVal.AutoSize = true;
-            lblExpensesVal.Location = new Point(77, 85);
+            lblExpensesVal.Location = new Point(73, 85);
             lblExpensesVal.Name = "lblExpensesVal";
             lblExpensesVal.Size = new Size(19, 21);
             lblExpensesVal.TabIndex = 5;
             lblExpensesVal.Text = "0";
+            lblExpensesVal.TextAlign = ContentAlignment.TopRight;
             // 
             // lblTotalValue
             // 
             lblTotalValue.AutoSize = true;
-            lblTotalValue.Location = new Point(76, 40);
+            lblTotalValue.Location = new Point(56, 40);
             lblTotalValue.Name = "lblTotalValue";
             lblTotalValue.Size = new Size(49, 21);
             lblTotalValue.TabIndex = 4;
             lblTotalValue.Text = "$0.00";
+            lblTotalValue.TextAlign = ContentAlignment.TopRight;
             // 
-            // label3
+            // lblTypeWithMostExpenses
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label3.Location = new Point(11, 219);
-            label3.Name = "label3";
-            label3.Size = new Size(158, 21);
-            label3.TabIndex = 3;
-            label3.Text = "Tipo con mas gastos";
+            lblTypeWithMostExpenses.AutoSize = true;
+            lblTypeWithMostExpenses.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblTypeWithMostExpenses.Location = new Point(0, 230);
+            lblTypeWithMostExpenses.Name = "lblTypeWithMostExpenses";
+            lblTypeWithMostExpenses.Size = new Size(158, 21);
+            lblTypeWithMostExpenses.TabIndex = 3;
+            lblTypeWithMostExpenses.Text = "Tipo con mas gastos";
             // 
-            // label2
+            // lblPlaceWithMostExpenses
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label2.Location = new Point(11, 128);
-            label2.Name = "label2";
-            label2.Size = new Size(168, 21);
-            label2.TabIndex = 2;
-            label2.Text = "Lugar con mas gastos";
+            lblPlaceWithMostExpenses.AutoSize = true;
+            lblPlaceWithMostExpenses.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblPlaceWithMostExpenses.Location = new Point(0, 128);
+            lblPlaceWithMostExpenses.Name = "lblPlaceWithMostExpenses";
+            lblPlaceWithMostExpenses.Size = new Size(168, 21);
+            lblPlaceWithMostExpenses.TabIndex = 2;
+            lblPlaceWithMostExpenses.Text = "Lugar con mas gastos";
             // 
-            // label1
+            // lblExpense
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label1.Location = new Point(11, 85);
-            label1.Name = "label1";
-            label1.Size = new Size(63, 21);
-            label1.TabIndex = 1;
-            label1.Text = "Gastos:";
+            lblExpense.AutoSize = true;
+            lblExpense.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblExpense.Location = new Point(0, 85);
+            lblExpense.Name = "lblExpense";
+            lblExpense.Size = new Size(63, 21);
+            lblExpense.TabIndex = 1;
+            lblExpense.Text = "Gastos:";
             // 
             // lblTotal
             // 
             lblTotal.AutoSize = true;
             lblTotal.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            lblTotal.Location = new Point(11, 40);
+            lblTotal.Location = new Point(0, 40);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(52, 21);
             lblTotal.TabIndex = 0;
@@ -336,7 +349,7 @@
             btnExport.Location = new Point(812, 365);
             btnExport.Name = "btnExport";
             btnExport.Size = new Size(192, 53);
-            btnExport.TabIndex = 12;
+            btnExport.TabIndex = 8;
             btnExport.Text = "Exportar";
             btnExport.UseVisualStyleBackColor = true;
             btnExport.Visible = false;
@@ -353,7 +366,7 @@
             Controls.Add(btnPrevious);
             Controls.Add(lblPages);
             Controls.Add(dgvExpenses);
-            Controls.Add(groupBox1);
+            Controls.Add(gBoxFilter);
             Controls.Add(menuStrip1);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             MainMenuStrip = menuStrip1;
@@ -363,8 +376,8 @@
             Load += ExpenseListForm_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            gBoxFilter.ResumeLayout(false);
+            gBoxFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)expenseDtoBindingSource).EndInit();
             gBoxSummary.ResumeLayout(false);
             gBoxSummary.PerformLayout();
@@ -376,8 +389,8 @@
         #endregion
 
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem agregarToolStripMenuItem;
-        private GroupBox groupBox1;
+        private ToolStripMenuItem addToolStripMenuItem;
+        private GroupBox gBoxFilter;
         private Label lblType;
         private CheckedListBox chkListType;
         private CheckBox chkTo;
@@ -392,9 +405,9 @@
         private Button btnNext;
         private GroupBox gBoxSummary;
         private BindingSource expenseDtoBindingSource;
-        private Label label3;
-        private Label label2;
-        private Label label1;
+        private Label lblTypeWithMostExpenses;
+        private Label lblPlaceWithMostExpenses;
+        private Label lblExpense;
         private Label lblTotal;
         private DataGridView dgvExpenses;
         private Label lblTypeVal;
@@ -402,5 +415,6 @@
         private Label lblExpensesVal;
         private Label lblTotalValue;
         private Button btnExport;
+        private ToolStripMenuItem closeToolStripMenuItem;
     }
 }

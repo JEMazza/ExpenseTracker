@@ -1,5 +1,4 @@
-﻿
-using ClosedXML.Excel;
+﻿using ClosedXML.Excel;
 using ExpenseServices.Data;
 using ExpenseServices.DTOs;
 using ExpenseServices.Entities;
@@ -7,7 +6,6 @@ using ExpenseServices.Requests;
 
 namespace ExpenseServices.Services {
     public class ExpenseService:BaseService {
-
 
         public ExpenseService(ExpensesUnitOfWork unit):base(unit) {
         }
@@ -152,14 +150,14 @@ namespace ExpenseServices.Services {
                 IEnumerable<ExpenseDto> expList;
                 using (var book = new XLWorkbook()) {
                     var summary = await _unit.Expenses.GetSummary(request.From,request.To,request.Types,request.Places);
-                    var expenseSheet = book.AddWorksheet("Gasto");
-                    expenseSheet.Cell(1, 1).Value = "Fecha";
-                    expenseSheet.Cell(1, 2).Value = "Nombre";
-                    expenseSheet.Cell(1, 3).Value = "Costo";
-                    expenseSheet.Cell(1, 4).Value = "Lugar";
-                    expenseSheet.Cell(1, 5).Value = "Tipo";
+                    var expenseSheet = book.AddWorksheet(Resources.Labels.ExpenseLabel);
+                    expenseSheet.Cell(1, 1).Value = Resources.Labels.ExpenseLabelDate;
+                    expenseSheet.Cell(1, 2).Value = Resources.Labels.ExpenseLabelName;
+                    expenseSheet.Cell(1, 3).Value = Resources.Labels.ExpenseLabelCost;
+                    expenseSheet.Cell(1, 4).Value = Resources.Labels.ExpenseLabelPlace;
+                    expenseSheet.Cell(1, 5).Value = Resources.Labels.ExpenseLabelType;
                     int row = 2;
-                    int pages = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(summary.Total) / 10000));
+                    int pages = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(summary.Expenses) / 10000));
                     for (int page = 1; page <=pages; page++) {
                         expList = await _unit.Expenses.GetExpenses(request.From, request.To, request.Types, request.Places, page, 10000);
                         foreach (ExpenseDto exp in expList) {
@@ -179,19 +177,19 @@ namespace ExpenseServices.Services {
                     expenseSheet.Columns(3, 3).Width = 22;
                     expenseSheet.Columns(4, 4).Width = 35;
                     expenseSheet.Columns(5, 5).Width = 36;
-                    var summarySheet = book.AddWorksheet("Summary");
-                    summarySheet.Cell(1, 1).Value = "Summary";
+                    var summarySheet = book.AddWorksheet(Resources.Labels.ExpenseLabelSummary);
+                    summarySheet.Cell(1, 1).Value = Resources.Labels.ExpenseLabelSummary;
                     summarySheet.Cell(1, 1).Style.Font.Bold = true;
                     summarySheet.Cell(1, 1).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
                     summarySheet.Cell(1, 1).Style.Fill.BackgroundColor = XLColor.White;
                     summarySheet.Range(1, 1, 1, 2).Merge();
-                    summarySheet.Cell(2, 1).Value = "Total";
-                    summarySheet.Cell(2, 2).Value = $"${summary.Total.ToString()}";
+                    summarySheet.Cell(2, 1).Value = Resources.Labels.ExpenseLabelTotal;
+                    summarySheet.Cell(2, 2).Value = $"${summary.Total:N2}";
                     summarySheet.Range(2, 1, 2, 2).Style.Fill.BackgroundColor = XLColor.LightBlue;
-                    summarySheet.Cell(3, 1).Value = "Lugar con mayor gasto";
+                    summarySheet.Cell(3, 1).Value = Resources.Labels.ExpenseLabelPlaceWithMostExpenses;
                     summarySheet.Cell(3, 2).Value = summary.highestPlace;
                     summarySheet.Range(3, 1, 3, 2).Style.Fill.BackgroundColor = XLColor.White;
-                    summarySheet.Cell(4, 1).Value = "Tipo con mayor gasto";
+                    summarySheet.Cell(4, 1).Value = Resources.Labels.ExpenseLabelTypeWithMostExpenses;
                     summarySheet.Cell(4, 2).Value = summary.highestType;
                     summarySheet.Range(4, 1, 4, 2).Style.Fill.BackgroundColor = XLColor.LightBlue;
                     summarySheet.Columns(1, 2).AdjustToContents();
@@ -203,6 +201,24 @@ namespace ExpenseServices.Services {
             catch (Exception) {
                 throw;
             }
+        }
+
+        /// <summary>
+        /// Gets the count for the expenses based on the filter
+        /// </summary>
+        /// <param name="request">The expense filter</param>
+        /// <returns>The ammount of expenses</returns>
+        public async Task<int> GetExpensesCount(ExpenseSearchRequest request) {
+            return await _unit.Expenses.GetExpenseCount(request.From, request.To,request.Types,request.Places);
+        }
+
+        /// <summary>
+        /// Returns the top 5 dates of total expense
+        /// </summary>
+        /// <param name="request">The expense filter</param>
+        /// <returns>A collection of name and total expense dates, up to 10 results</returns>
+        public async Task<IEnumerable<ExpenseChartDto>> GetTop5Expenses(ExpenseSearchRequest request) {
+            return await _unit.Expenses.GetTop5Dates(request.From,request.To,request.Types,request.Places);
         }
     }
 }

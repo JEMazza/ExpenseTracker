@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ExpenseLabelDate" xml:space="preserve">
+    <value>Date</value>
+    <comment>Date label on forms and data grids</comment>
+  </data>
+  <data name="ExpenseLabelCost" xml:space="preserve">
+    <value>Cost</value>
+    <comment>Cost label on forms and data grids</comment>
+  </data>
+  <data name="ExpenseLabelActionDelete" xml:space="preserve">
+    <value>Remove</value>
+    <comment>Delete action label on forms and data grids</comment>
+  </data>
+  <data name="ExpenseMessageDeleteWarning" xml:space="preserve">
+    <value>Are you sure you want to remove this expense? 
+This action cannot be reversed.</value>
+    <comment>Message to confirm the removal of an expense</comment>
+  </data>
+  <data name="ExpenseGroupBoxFilterTitle" xml:space="preserve">
+    <value>Filter</value>
+    <comment>Expense filter title section</comment>
+  </data>
+  <data name="ExpenseLabelInputFrom" xml:space="preserve">
+    <value>From</value>
+    <comment>From date label on expense filter form</comment>
+  </data>
+  <data name="ExpenseLabel" xml:space="preserve">
+    <value>Expenses</value>
+    <comment>Expense label on forms and data grids</comment>
+  </data>
+  <data name="ExpenseLabelActionModify" xml:space="preserve">
+    <value>Modify</value>
+    <comment>Update expense action label on forms and data grids</comment>
+  </data>
+  <data name="ExpenseLabelName" xml:space="preserve">
+    <value>Name</value>
+    <comment>Expense name label on forms and data grids</comment>
+  </data>
+  <data name="ExpenseFormTitleNew" xml:space="preserve">
+    <value>New Expense</value>
+    <comment>New Expense form title</comment>
+  </data>
+  <data name="ExpenseLabelPlace" xml:space="preserve">
+    <value>Place</value>
+    <comment>Expense Place label on forms and data grids</comment>
+  </data>
+  <data name="ExpenseLabelTableAction" xml:space="preserve">
+    <value>Action</value>
+    <comment>Action label on data grids</comment>
+  </data>
+  <data name="ExpenseLabelInputTo" xml:space="preserve">
+    <value>To</value>
+    <comment>To date input label on expense filter forms</comment>
+  </data>
+  <data name="ExpenseLabelType" xml:space="preserve">
+    <value>Type</value>
+    <comment>Expense type label on forms and data grids</comment>
+  </data>
+  <data name="ExpenseFormTitleUpdate" xml:space="preserve">
+    <value>Update Expense</value>
+    <comment>Modify expense form title</comment>
+  </data>
+  <data name="ExpenseLabelPages" xml:space="preserve">
+    <value>Page {0} of {1}</value>
+    <comment>Expense pages label</comment>
+  </data>
+  <data name="ExpenseLabelActionFilter" xml:space="preserve">
+    <value>Search</value>
+    <comment>Label for filtering expenses</comment>
+  </data>
+  <data name="ExpenseMessageAddSuccess" xml:space="preserve">
+    <value>Expense added succesfully.
+Do you wish do add another one?</value>
+    <comment>Message for sucessfully adding an expense.</comment>
+  </data>
+  <data name="ExpenseMessageUpdateSucess" xml:space="preserve">
+    <value>Expense modified succesfully.</value>
+    <comment>Message for sucessfully modifing an expense.</comment>
+  </data>
+  <data name="ExpenseLabelActionAdd" xml:space="preserve">
+    <value>Add</value>
+    <comment>Label for adding expenses</comment>
+  </data>
+  <data name="ExpenseLabelActionBack" xml:space="preserve">
+    <value>Return</value>
+    <comment>Label for back actions.</comment>
+  </data>
+  <data name="ExpenseMessageBoxTitleError" xml:space="preserve">
+    <value>Error</value>
+    <comment>Label for MessageBox errors.</comment>
+  </data>
+  <data name="ExpenseMessageBoxTitleSuccess" xml:space="preserve">
+    <value>Success</value>
+    <comment>Label for MessageBox success.</comment>
+  </data>
+  <data name="ExpenseMessageExpenseNotFound" xml:space="preserve">
+    <value>The expense searched does not exist.</value>
+    <comment>Label for MessageBox success.</comment>
+  </data>
+  <data name="ExpenseMessageException" xml:space="preserve">
+    <value>There has been an error.</value>
+    <comment>Generic message for errors</comment>
+  </data>
+  <data name="ExpenseMenuLabelExpenses" xml:space="preserve">
+    <value>Expenses</value>
+    <comment>Menu label for expense</comment>
+  </data>
+  <data name="ExpenseMenuLabelExpenseAdd" xml:space="preserve">
+    <value>Add</value>
+    <comment>Menu label for adding an expense</comment>
+  </data>
+  <data name="ExpenseMenuLabelExpenseList" xml:space="preserve">
+    <value>List</value>
+    <comment>Menu Label for listing expenses</comment>
+  </data>
+  <data name="ExpenseMenuLabelReports" xml:space="preserve">
+    <value>Report</value>
+    <comment>Menu label for reports</comment>
+  </data>
+  <data name="ExpenseMenuLabelClose" xml:space="preserve">
+    <value>Close</value>
+    <comment>Menu label for close</comment>
+  </data>
+  <data name="ExpenseFormTitleMainMenu" xml:space="preserve">
+    <value>Main menu</value>
+    <comment>Main menu form title</comment>
+  </data>
+  <data name="ExpenseFormTitleListExpenses" xml:space="preserve">
+    <value>List of expenses</value>
+    <comment>Expense List form title</comment>
+  </data>
+  <data name="ExpenseLabelActionExport" xml:space="preserve">
+    <value>Export</value>
+    <comment>Label for export action</comment>
+  </data>
+  <data name="ExpenseLabelPlaceWithMostExpenses" xml:space="preserve">
+    <value>Place with most expenses</value>
+    <comment>Label for place with most expenses</comment>
+  </data>
+  <data name="ExpenseLabelTypeWithMostExpenses" xml:space="preserve">
+    <value>Type with most expenses</value>
+    <comment>Label for type with most expenses</comment>
+  </data>
+  <data name="ExpenseLabelSummary" xml:space="preserve">
+    <value>Summary</value>
+    <comment>Label for summary of expense filter</comment>
+  </data>
+  <data name="ExpenseMessageExportSuccess" xml:space="preserve">
+    <value>Expenses exported succesfully.</value>
+    <comment>Message for successfuly exporting expenses</comment>
+  </data>
+  <data name="ExpenseLabelTotal" xml:space="preserve">
+    <value>Total</value>
+    <comment>Label for Total in summary</comment>
+  </data>
+  <data name="ExpenseLabelExpenses" xml:space="preserve">
+    <value>Expenses</value>
+    <comment>Label for expenses in summary</comment>
+  </data>
+  <data name="ExpenseLabelActionNext" xml:space="preserve">
+    <value>Next</value>
+    <comment>Label for next action</comment>
+  </data>
+  <data name="ExpenseLabelActionPrevious" xml:space="preserve">
+    <value>Previous</value>
+    <comment>Label for previous action</comment>
+  </data>
+  <data name="ExpenseMessageBoxTitleWarning" xml:space="preserve">
+    <value>Warning</value>
+    <comment>Label for MessageBox warning</comment>
+  </data>
+  <data name="ExpenseMessageRemoveSuccess" xml:space="preserve">
+    <value>Expense removed succesfuly.</value>
+    <comment>Message for removing an expense</comment>
+  </data>
+  <data name="ExpenseLabelCount" xml:space="preserve">
+    <value>Count</value>
+    <comment>Count label on forms and data grids</comment>
+  </data>
+  <data name="ExpenseFormTitleReport" xml:space="preserve">
+    <value>Report of expenses</value>
+    <comment>Expense report form title</comment>
+  </data>
+  <data name="ExpenseFileNameReport" xml:space="preserve">
+    <value>ExpenseReport_{0}</value>
+    <comment>Filename for the expense report file</comment>
+  </data>
+  <data name="ExpenseMessageReportExportSuccess" xml:space="preserve">
+    <value>Report exported sucessfully.</value>
+    <comment>Message for succesfully exporting the report</comment>
+  </data>
+  <data name="ExpenseFileNameExpenses" xml:space="preserve">
+    <value>Expenses_{0}</value>
+    <comment>Filename for the expenses file</comment>
+  </data>
+  <data name="ExpenseExportFileDialogTitle" xml:space="preserve">
+    <value>Select where the expense file will be saved on</value>
+    <comment>Dialog title for the export action</comment>
+  </data>
+  <data name="ExpenseFormTitleSettings" xml:space="preserve">
+    <value>Settings </value>
+    <comment>Settings form title</comment>
+  </data>
+  <data name="ExpenseMessagePageChangeWarningOver100" xml:space="preserve">
+    <value>Retrieving over 100 expenses per page can lead to performance issues. 
+Are you sure you want to retrieve {0} expenses per page?</value>
+    <comment>Warning message for page size over 100</comment>
+  </data>
+  <data name="ExpenseMessagePageChangeWarningUnder10" xml:space="preserve">
+    <value>Retrieving 10 or less expenses per page can affect user experience. 
+Are you sure do you want to retrieve {0} expenses per page?</value>
+    <comment>Warning message for page size less or equal to 10</comment>
+  </data>
+  <data name="ExpenseMessageSettingsChangeSuccess" xml:space="preserve">
+    <value>Settings changed succesfully.</value>
+    <comment>Message for succesfully updating the page size changes.</comment>
+  </data>
+  <data name="ExpenseMessageLanguageChanged" xml:space="preserve">
+    <value>You recently changed the language. 
+It will be applied after you close the program.</value>
+    <comment>Message for warning after a language change</comment>
+  </data>
+  <data name="ExpenseMenuLabelSettings" xml:space="preserve">
+    <value>Settings</value>
+    <comment>Menu label for settings in main menu</comment>
+  </data>
+  <data name="ExpenseLabelVersion" xml:space="preserve">
+    <value>Version: {0}</value>
+    <comment>Label for system version</comment>
+  </data>
+  <data name="ExpenseLabelLanguage" xml:space="preserve">
+    <value>Language</value>
+    <comment>Label for language label</comment>
+  </data>
+  <data name="ExpenseLabelPageSize" xml:space="preserve">
+    <value>Expenses per page</value>
+    <comment>Label for the page size</comment>
+  </data>
+  <data name="ExpenseLabelActionSave" xml:space="preserve">
+    <value>Save</value>
+    <comment>Label for save actions</comment>
+  </data>
+  <data name="ExpenseMessagePageSizeError" xml:space="preserve">
+    <value>You can't set that pages bring less than 1 expense.</value>
+    <comment>Error message for setting the Expenses Per Page lower than 1</comment>
+  </data>
+  <data name="ExpenseLabelLanguageSpanish" xml:space="preserve">
+    <value>Spanish</value>
+    <comment>Label for the spanish language</comment>
+  </data>
+  <data name="ExpenseLabelLanguageEnglish" xml:space="preserve">
+    <value>English</value>
+    <comment>Label for the english language</comment>
+  </data>
+</root>

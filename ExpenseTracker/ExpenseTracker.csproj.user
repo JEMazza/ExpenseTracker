@@ -7,8 +7,19 @@
     <Compile Update="Forms\ExpenseListForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\ExpenseReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\MessagesResource.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

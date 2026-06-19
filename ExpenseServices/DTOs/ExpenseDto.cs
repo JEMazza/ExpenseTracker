@@ -3,5 +3,6 @@
     
     public record ExpenseSummaryDto(double Total, int Expenses, string highestPlace, string highestType);
     public record ExpenseFormDto(int Id, string Name, DateTime Date, double Price, int Type, int Place);
+    public record ExpenseChartDto(string Date, double Total);
 
 }

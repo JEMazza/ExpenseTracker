@@ -1,6 +1,7 @@
 ﻿using ExpenseServices.DTOs;
 using ExpenseServices.Requests;
 using ExpenseServices.Services;
+using Microsoft.Extensions.Logging;
 
 namespace ExpenseTracker.Forms {
     public partial class ExpenseDataForm : Form {
@@ -8,13 +9,15 @@ namespace ExpenseTracker.Forms {
         private readonly ExpenseService _service;
         private readonly ExpenseTypeService _typeService;
         private readonly ExpensePlaceService _placeService;
+        private readonly ILogger<ExpenseDataForm> _logger;
         public bool refresh = false;
         private int _id = -1;
 
-        public ExpenseDataForm(ExpenseService service,ExpenseTypeService typeService, ExpensePlaceService placeService) {
+        public ExpenseDataForm(ExpenseService service,ExpenseTypeService typeService, ExpensePlaceService placeService, ILogger<ExpenseDataForm> logger) {
             _service = service;
             _typeService = typeService;
             _placeService = placeService;
+            _logger = logger;
             InitializeComponent();
         }
 
@@ -40,7 +43,13 @@ namespace ExpenseTracker.Forms {
 
 
         private async void ExpenseDataForm_Load(object sender, EventArgs e) {
-            this.Text = _id!=-1?"Actualizar gasto":"Nuevo gasto";
+            lblCost.Text = Resources.MessagesResource.ExpenseLabelCost;
+            lblDate.Text = Resources.MessagesResource.ExpenseLabelDate;
+            lblName.Text = Resources.MessagesResource.ExpenseLabelName;
+            lblType.Text = Resources.MessagesResource.ExpenseLabelType;
+            lblPlace.Text = Resources.MessagesResource.ExpenseLabelPlace;
+            btnBack.Text = Resources.MessagesResource.ExpenseLabelActionBack;
+            this.Text = _id!=-1?Resources.MessagesResource.ExpenseFormTitleUpdate : Resources.MessagesResource.ExpenseFormTitleNew;
             cmbPlace.ValueMember = "Id";
             cmbPlace.DisplayMember = "Name";
             cmbType.ValueMember = "Id";
@@ -49,11 +58,12 @@ namespace ExpenseTracker.Forms {
             if (_id != -1) {
                 ExpenseFormDto? formData = await _service.PrepareExpenseForm(_id);
                 if (formData == null) {
-                    MessageBox.Show("El gasto no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    _logger.LogWarning("User attempted to obtained an expense that was deleted. ID={0}", _id);
+                    MessageBox.Show(Resources.MessagesResource.ExpenseMessageExpenseNotFound, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.Close();
                     return;
                 }
-                btnAction.Text = "Actualizar";
+                btnAction.Text = Resources.MessagesResource.ExpenseLabelActionModify;
                 tBoxName.Text = formData.Name;
                 numCost.Value = Convert.ToDecimal(formData.Price);
                 dtpDate.Value = formData.Date;
@@ -61,7 +71,7 @@ namespace ExpenseTracker.Forms {
                 cmbType.SelectedItem = cmbType.Items.Cast<ExpenseTypeDto>().FirstOrDefault(et => et.Id == formData.Type);
             }
             else {
-                btnAction.Text = "Agregar";
+                btnAction.Text = Resources.MessagesResource.ExpenseLabelActionAdd;
             }
         }
 
@@ -78,37 +88,37 @@ namespace ExpenseTracker.Forms {
                     Name = tBoxName.Text,
                     Cost = decimal.ToDouble(numCost.Value),
                     Date = dtpDate.Value.Date,
-                    Place = cmbPlace.Text.ToUpperInvariant(),
-                    Type = cmbType.Text.ToUpperInvariant(),
+                    Place = cmbPlace.Text.Trim(),
+                    Type = cmbType.Text.Trim(),
                 };
                 string msg = request.Valid();
                 if (!string.IsNullOrEmpty(msg)) {
-                    MessageBox.Show(msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(msg, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 if(_id != -1) {
                     await _service.UpdateExpense(_id, request);
-                    msg = "Gasto actualizado correctamente";
-                    MessageBox.Show("Gasto actualizado correctamente", "Exito", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    MessageBox.Show(Resources.MessagesResource.ExpenseMessageUpdateSucess, Resources.MessagesResource.ExpenseMessageBoxTitleSuccess, MessageBoxButtons.OK,MessageBoxIcon.Information);
                     refresh = true;
                     this.Close();
                 }
                 else {
                     await _service.AddExpense(request);
                     refresh = true;
-                    var more = MessageBox.Show("Gasto agregado correctamente. \n ¿Desea añadir otro?", "Exito", MessageBoxButtons.YesNo,MessageBoxIcon.Information);
+                    var more = MessageBox.Show(Resources.MessagesResource.ExpenseMessageAddSuccess, Resources.MessagesResource.ExpenseMessageBoxTitleSuccess, MessageBoxButtons.YesNo,MessageBoxIcon.Information);
                     if (more == DialogResult.Yes) {
                         await PrepareForm();
                     }
-                    else if (more == DialogResult.No) {
+                    else {
                         this.Close();
                     }
                 }
             }
             catch(Exception ex) {
-                MessageBox.Show("An error occured: "+ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally {
+                string msg = "Error when " + (_id!=-1?"updating":"adding") + " an expense. ";
+                _logger.LogError(ex, msg);
+                MessageBox.Show(Resources.MessagesResource.ExpenseMessageException, Resources.MessagesResource.ExpenseMessageBoxTitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }finally {
                 btnAction.Enabled = true;
                 btnBack.Enabled = true;
 

@@ -31,11 +31,11 @@ namespace ExpenseServices.Data {
         }
 
         public async Task Commit(IDbContextTransaction tran) {
-            await _context.Database.CommitTransactionAsync();
+            await tran.CommitAsync();
         }
 
         public async Task Rollback(IDbContextTransaction tran) {
-            await tran.CommitAsync();
+            await tran.RollbackAsync();
         }
 
         public async Task<IDbContextTransaction> StartTransaction() {

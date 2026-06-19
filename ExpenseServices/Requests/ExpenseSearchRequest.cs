@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+
 namespace ExpenseServices.Requests {
     public class ExpenseSearchRequest:IRequest {
         public DateTime? From { get; set; }
@@ -7,7 +8,7 @@ namespace ExpenseServices.Requests {
         public IEnumerable<int> Places { get; set; }
         public string Valid() {
             if (From.HasValue && To.HasValue && (From.Value > To.Value)) {
-                return "La fecha 'Desde' no puede ser mayor a 'Hasta'";
+                return Resources.ErrorMessages.ExpenseSearchDateError;
             }
             return string.Empty;
         }

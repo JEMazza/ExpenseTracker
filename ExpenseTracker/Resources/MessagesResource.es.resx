@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ExpenseLabelDate" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="ExpenseLabelCost" xml:space="preserve">
+    <value>Costo</value>
+  </data>
+  <data name="ExpenseLabelActionDelete" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="ExpenseMessageDeleteWarning" xml:space="preserve">
+    <value>¿Esta seguro que desea eliminar este gasto?
+Esta acción no puede deshacerse.</value>
+  </data>
+  <data name="ExpenseGroupBoxFilterTitle" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="ExpenseLabelInputFrom" xml:space="preserve">
+    <value>Desde</value>
+  </data>
+  <data name="ExpenseLabel" xml:space="preserve">
+    <value>Gastos</value>
+  </data>
+  <data name="ExpenseLabelActionModify" xml:space="preserve">
+    <value>Modificar</value>
+  </data>
+  <data name="ExpenseLabelName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="ExpenseFormTitleNew" xml:space="preserve">
+    <value>Nuevo gasto</value>
+  </data>
+  <data name="ExpenseLabelPlace" xml:space="preserve">
+    <value>Lugar</value>
+  </data>
+  <data name="ExpenseLabelTableAction" xml:space="preserve">
+    <value>Acción</value>
+  </data>
+  <data name="ExpenseLabelInputTo" xml:space="preserve">
+    <value>Hasta</value>
+  </data>
+  <data name="ExpenseLabelType" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="ExpenseFormTitleUpdate" xml:space="preserve">
+    <value>Actualizar gasto</value>
+  </data>
+  <data name="ExpenseLabelPages" xml:space="preserve">
+    <value>Página {0} of {1}</value>
+  </data>
+  <data name="ExpenseLabelActionFilter" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="ExpenseMessageAddSuccess" xml:space="preserve">
+    <value>Gasto agregado con éxito.
+¿Desea agregar otro?</value>
+  </data>
+  <data name="ExpenseMessageUpdateSucess" xml:space="preserve">
+    <value>Gasto actualizado exitosamente.</value>
+  </data>
+  <data name="ExpenseLabelActionAdd" xml:space="preserve">
+    <value>Agregar</value>
+  </data>
+  <data name="ExpenseLabelActionBack" xml:space="preserve">
+    <value>Volver</value>
+  </data>
+  <data name="ExpenseMessageBoxTitleError" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ExpenseMessageBoxTitleSuccess" xml:space="preserve">
+    <value>Éxito</value>
+  </data>
+  <data name="ExpenseMessageExpenseNotFound" xml:space="preserve">
+    <value>El gasto buscado no existe.</value>
+  </data>
+  <data name="ExpenseMessageException" xml:space="preserve">
+    <value>Ha ocurrido un error.</value>
+  </data>
+  <data name="ExpenseMenuLabelExpenses" xml:space="preserve">
+    <value>Gastos</value>
+  </data>
+  <data name="ExpenseMenuLabelExpenseAdd" xml:space="preserve">
+    <value>Agregar</value>
+  </data>
+  <data name="ExpenseMenuLabelExpenseList" xml:space="preserve">
+    <value>Lista</value>
+  </data>
+  <data name="ExpenseMenuLabelReports" xml:space="preserve">
+    <value>Reportes</value>
+  </data>
+  <data name="ExpenseMenuLabelClose" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
+  <data name="ExpenseFormTitleMainMenu" xml:space="preserve">
+    <value>Menú principal</value>
+  </data>
+  <data name="ExpenseFormTitleListExpenses" xml:space="preserve">
+    <value>Lista de gastos</value>
+  </data>
+  <data name="ExpenseLabelActionExport" xml:space="preserve">
+    <value>Exportar</value>
+  </data>
+  <data name="ExpenseLabelPlaceWithMostExpenses" xml:space="preserve">
+    <value>Lugar con mas gastos</value>
+  </data>
+  <data name="ExpenseLabelTypeWithMostExpenses" xml:space="preserve">
+    <value>Tipo con mas gastos</value>
+  </data>
+  <data name="ExpenseLabelSummary" xml:space="preserve">
+    <value>Resumen</value>
+  </data>
+  <data name="ExpenseMessageExportSuccess" xml:space="preserve">
+    <value>Gastos exportados correctamente.</value>
+  </data>
+  <data name="ExpenseLabelTotal" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="ExpenseLabelExpenses" xml:space="preserve">
+    <value>Gastos</value>
+  </data>
+  <data name="ExpenseLabelActionNext" xml:space="preserve">
+    <value>Siguiente</value>
+  </data>
+  <data name="ExpenseLabelActionPrevious" xml:space="preserve">
+    <value>Anterior</value>
+  </data>
+  <data name="ExpenseMessageBoxTitleWarning" xml:space="preserve">
+    <value>Aviso</value>
+  </data>
+  <data name="ExpenseMessageRemoveSuccess" xml:space="preserve">
+    <value>Gasto eliminado exitosamente.</value>
+  </data>
+  <data name="ExpenseLabelCount" xml:space="preserve">
+    <value>Cantidad</value>
+  </data>
+  <data name="ExpenseFormTitleReport" xml:space="preserve">
+    <value>Reporte de gastos</value>
+  </data>
+  <data name="ExpenseFileNameReport" xml:space="preserve">
+    <value>ReporteGastos_{0}</value>
+  </data>
+  <data name="ExpenseMessageReportExportSuccess" xml:space="preserve">
+    <value>Reporte exportado exitosamente.</value>
+  </data>
+  <data name="ExpenseFileNameExpenses" xml:space="preserve">
+    <value>Gastos_{0}</value>
+  </data>
+  <data name="ExpenseExportFileDialogTitle" xml:space="preserve">
+    <value>Seleccione el lugar para exportar el archivo de gastos</value>
+  </data>
+  <data name="ExpenseFormTitleSettings" xml:space="preserve">
+    <value>Configuración</value>
+  </data>
+  <data name="ExpenseMessagePageChangeWarningOver100" xml:space="preserve">
+    <value>Obtener mas de 100 gastos por página puede afectar el rendimiento. 
+¿Esta seguro que desea obtener {0} gastos por página?</value>
+  </data>
+  <data name="ExpenseMessagePageChangeWarningUnder10" xml:space="preserve">
+    <value>Obtener 10 o menos gastos puede generar problemas de experiencia de usuario. 
+¿Esta seguro que desea obtener {0} gastos por pagina?</value>
+  </data>
+  <data name="ExpenseMessageSettingsChangeSuccess" xml:space="preserve">
+    <value>Configuración cambiada exitosamente.</value>
+  </data>
+  <data name="ExpenseMessageLanguageChanged" xml:space="preserve">
+    <value>Recientemente ha cambiado el idioma. 
+Este será aplicado cuando cierre el programa. </value>
+  </data>
+  <data name="ExpenseMenuLabelSettings" xml:space="preserve">
+    <value>Configuración</value>
+  </data>
+  <data name="ExpenseLabelVersion" xml:space="preserve">
+    <value>Version: {0}</value>
+  </data>
+  <data name="ExpenseLabelLanguage" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="ExpenseLabelPageSize" xml:space="preserve">
+    <value>Gastos por página</value>
+  </data>
+  <data name="ExpenseLabelActionSave" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="ExpenseMessagePageSizeError" xml:space="preserve">
+    <value>No puede definir que las páginas traigan menos de un gasto por pagina.</value>
+  </data>
+  <data name="ExpenseLabelLanguageSpanish" xml:space="preserve">
+    <value>Español</value>
+  </data>
+  <data name="ExpenseLabelLanguageEnglish" xml:space="preserve">
+    <value>Inglés</value>
+  </data>
+</root>

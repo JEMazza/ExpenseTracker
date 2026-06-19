@@ -1,0 +1,30 @@
+name: Expense Tracker - .NET Desktop CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: windows-latest  
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Restore NuGet Packages
+      run: dotnet restore ExpenseTracker/ExpenseTracker.sln
+
+    - name: Compile Release Build
+      run: dotnet build ExpenseTracker/ExpenseTracker.sln --configuration Release --no-restore
